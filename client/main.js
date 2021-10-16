@@ -1,18 +1,14 @@
-// https://vitejs.dev/config/#build-polyfillmodulepreload
-import 'vite/modulepreload-polyfill'
-// still waiting for solution https://github.com/vitejs/vite/issues/4786
-
 import { createApp } from 'vue'
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import '@devhau/vue-ui/dist/vue-ui.esm.css';
 
-// Styles
-import './css/main.css';
-
-// If you are build a SPA with a single <div id="app"></div> entry you would:
-// import App from './App.vue'
-// createApp(App).mount('#app')
-
-// The example here is to have multiple Vue apps sprinkled throughout your page
-// So we would instantiate any known components by their own
+import VueUi from '@devhau/vue-ui';
 import App from './App.vue'
+import router from './router';
+
 const app = createApp(App);
+app.use(VueUi);
+app.use(router);
 app.mount('#app');

@@ -22,7 +22,7 @@ export default defineConfig(({ command }) => ({
     // config
     root: path.resolve(__dirname, 'client'),
     publicDir: path.resolve(__dirname, 'client', 'static'),
-    //base: command === "build" ? "/dist/" : "",
+    base: command === "build" ? "/dist/" : "",
     plugins: [
         vue(),
         liveReload("(app|config|database|public|resources|routes|tests)/**/*.php")
