@@ -1,0 +1,23 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^1.9.3",
+        "@vue/compiler-sfc": "^3.2.20",
+        "axios": "^0.21",
+        "dotenv": "^10.0.0",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "postcss-import": "^14.0.2",
+        "sass": "^1.43.2",
+        "vite": "^2.6.7"
+    },
+    "dependencies": {
+        "koa-compose": "^4.1.0",
+        "vite-plugin-live-reload": "^2.1.0",
+        "vue": "^3.2.20"
+    }
+}
