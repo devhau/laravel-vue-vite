@@ -8,8 +8,8 @@ export default defineComponent({
       menu: {
         app: {
           logo: {
-            app: "VDemo",
-            mini: "VDM",
+            app: "HauCorp",
+            mini: "HCP",
           },
           version: {
             app: "Version 1.0.2",
