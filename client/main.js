@@ -3,6 +3,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@devhau/vue-ui/dist/vue-ui.esm.css';
+import './scss/main.scss';
 
 import VueUi from '@devhau/vue-ui';
 import App from './App.vue'

@@ -68,6 +68,7 @@ export default defineConfig(({ command }) => ({
     // https://v3.vuejs.org/guide/installation.html#with-a-bundler
     resolve: {
         alias: {
+            '@': path.resolve(__dirname, 'client'),
             vue: 'vue/dist/vue.esm-bundler.js'
         }
     },

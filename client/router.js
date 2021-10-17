@@ -1,10 +1,14 @@
 
 import { createRouter, createWebHashHistory } from "vue-router"
 
-import  HomeComponent   from './components/kanban.vue';
-import  GanttComponent   from './components/gantt.vue';
-import  AccordionComponent   from './components/accordion.vue';
-import  AlertComponent   from './components/alert.vue';
+import HomeComponent from './components/kanban.vue';
+import LoginPage from '@/views/auth/login.vue';
+import RegisterPage from '@/views/auth/register.vue';
+const layout = {
+    None: 'None',
+    NoSidebar: 'NoSidebar',
+    Sidebar: 'Sidebar'
+};
 
 const routes = [
     {
@@ -13,19 +17,20 @@ const routes = [
         component: HomeComponent,
     },
     {
-        path: '/gantt',
-        name: 'Gantt',
-        component: GanttComponent,
+        path: '/login',
+        name: 'Login',
+        component: LoginPage,
+        meta: {
+            layout: layout.None
+        }
     },
     {
-        path: '/accordion',
-        name: 'Accordion',
-        component: AccordionComponent,
-    },
-    {
-        path: '/alert',
-        name: 'Alert',
-        component: AlertComponent,
+        path: '/register',
+        name: 'Register',
+        component: RegisterPage,
+        meta: {
+            layout: layout.None
+        }
     },
 ];
 const router = createRouter({

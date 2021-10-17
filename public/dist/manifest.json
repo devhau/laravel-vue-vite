@@ -1,20 +1,23 @@
 {
   "main.js": {
-    "file": "assets/main.13766160.js",
+    "file": "assets/main.7f0c8771.js",
     "src": "main.js",
     "isEntry": true,
     "imports": [
-      "_vendor.76be202d.js"
+      "_vendor.b796f82b.js"
     ],
     "css": [
-      "assets/main.22fcc077.css"
+      "assets/main.68c42843.css"
     ],
     "assets": [
       "assets/bootstrap-icons.6b40a0a2.woff2",
       "assets/bootstrap-icons.a09b3467.woff"
     ]
   },
-  "_vendor.76be202d.js": {
-    "file": "assets/vendor.76be202d.js"
+  "_vendor.b796f82b.js": {
+    "file": "assets/vendor.b796f82b.js"
+  },
+  "_vendor.4cef8b7c.js": {
+    "file": "assets/vendor.4cef8b7c.js"
   }
 }

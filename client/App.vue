@@ -5,11 +5,12 @@ export default defineComponent({
   name: "HomePage",
   data() {
     return {
+      layout: 'Sidebar',
       menu: {
         app: {
           logo: {
-            app: "HauCorp",
-            mini: "HCP",
+            app: "HauAdmin",
+            mini: "HAU",
           },
           version: {
             app: "Version 1.0.2",
@@ -132,6 +133,15 @@ export default defineComponent({
       },
     };
   },
+  watch: {
+    '$route.meta.layout': {
+      handler: function (_layout) {
+        this.layout = _layout;
+      },
+      deep: true,
+      immediate: true
+    }
+  }
 });
 </script>
 
@@ -139,6 +149,7 @@ export default defineComponent({
   <vh-application
     :menu="menu"
     :miniSidebar="false"
+    :layout="layout"
   >
     <router-view></router-view>
   </vh-application>

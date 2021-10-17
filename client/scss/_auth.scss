@@ -1,0 +1,27 @@
+.vh-auth-page {
+    background: #026aa7;
+    height: 100vh;
+    overflow: auto;
+    .vh-auth-box {
+        box-shadow: chocolate;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        margin: 20vh auto;
+        border-radius: 1px;
+        background: #eee;
+        max-width: 400px;
+        min-height: 100px;
+        .vh-auth-header,
+        .vh-auth-body,
+        .vh-auth-bottom {
+            padding: 10px;
+        }
+        .vh-auth-header,
+        .vh-auth-bottom {
+            background: #033a5a;
+            text-align: center;
+            color: #fff;
+        }
+    }
+}
