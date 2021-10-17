@@ -1,3 +1,10 @@
 {
+    "compilerOptions": {
+        "types": ["vite/client"],
+        "baseUrl": ".",
+        "paths": {
+            "@": ["client"]
+        }
+    },
     "exclude": ["node_modules", "public/dist"]
 }

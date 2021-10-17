@@ -141,6 +141,9 @@ export default defineComponent({
       deep: true,
       immediate: true
     }
+  },
+  mounted() {
+    console.log(this.$router);
   }
 });
 </script>

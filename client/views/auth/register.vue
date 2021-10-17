@@ -8,6 +8,7 @@
         <div class="mb-2">
           <label for="email">Email</label>
           <vh-input
+            v-model="email"
             id="email"
             placeholder="Email"
           />
@@ -15,6 +16,7 @@
         <div class="mb-2">
           <label for="fullname">Full name</label>
           <vh-input
+            v-model="name"
             id="fullname"
             placeholder="Full name"
           />
@@ -22,6 +24,7 @@
         <div class="mb-2">
           <label for="password">Password</label>
           <vh-input
+            v-model="pass"
             type="password"
             id="password"
             placeholder="Password"
@@ -36,7 +39,10 @@
             </vh-button>
           </vh-col>
           <vh-col>
-            <vh-button color="success">
+            <vh-button
+              color="success"
+              @click="doRegister"
+            >
               Register
             </vh-button>
           </vh-col>
@@ -46,7 +52,25 @@
   </vh-page>
 </template>
 <script>
+import auth from '@/api/auth';
 export default {
+  data() {
+    return {
+      email: '',
+      name: '',
+      pass: ''
+    };
+  },
+  methods: {
+    doRegister() {
+      auth.register({
+        email: this.email,
+        name: this.name,
+        password: this.pass
+      });
+      console.log(import.meta.env.VITE_APP_API_URL);
+    },
+  },
   setup() {
 
   },

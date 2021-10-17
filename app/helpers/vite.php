@@ -29,8 +29,8 @@ if (!function_exists('vite_assets')) {
         ), true);
 
         return new HtmlString(<<<HTML
-            <script type="module" src="/dist/{$manifest['main.js']['file']}"></script>
-            <link rel="stylesheet" href="/dist/{$manifest['main.js']['css'][0]}">
+            <script type="module" src="/dist/{$manifest['client/main.js']['file']}"></script>
+            <link rel="stylesheet" href="/dist/{$manifest['client/main.js']['css'][0]}">
         HTML);
     }
 }

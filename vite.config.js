@@ -20,7 +20,7 @@ Dotenv.config();
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
     // config
-    root: path.resolve(__dirname, 'client'),
+    // root: path.resolve(__dirname, 'client'),
     publicDir: path.resolve(__dirname, 'client', 'static'),
     base: command === "build" ? "/dist/" : "",
     plugins: [
@@ -42,7 +42,7 @@ export default defineConfig(({ command }) => ({
 
         // our entry
         rollupOptions: {
-            input: '/main.js'
+            input: path.resolve(__dirname, 'client/main.js')
         },
         watch: {}
     },
