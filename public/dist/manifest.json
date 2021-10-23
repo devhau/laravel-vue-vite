@@ -1,20 +1,20 @@
 {
   "client/main.js": {
-    "file": "assets/main.a75932c4.js",
+    "file": "assets/main.23f65429.js",
     "src": "client/main.js",
     "isEntry": true,
     "imports": [
-      "_vendor.cc1d5de9.js"
+      "_vendor.92c235f4.js"
     ],
     "css": [
-      "assets/main.98b2d2ba.css"
+      "assets/main.9fe1835d.css"
     ],
     "assets": [
-      "assets/bootstrap-icons.6b40a0a2.woff2",
-      "assets/bootstrap-icons.a09b3467.woff"
+      "assets/bootstrap-icons.64c00203.woff2",
+      "assets/bootstrap-icons.828fa79d.woff"
     ]
   },
-  "_vendor.cc1d5de9.js": {
-    "file": "assets/vendor.cc1d5de9.js"
+  "_vendor.92c235f4.js": {
+    "file": "assets/vendor.92c235f4.js"
   }
 }

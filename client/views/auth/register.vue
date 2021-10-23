@@ -67,8 +67,9 @@ export default {
         email: this.email,
         name: this.name,
         password: this.pass
+      }).then(() => {
+        this.$router.push({ name: 'Login' });
       });
-      console.log(import.meta.env.VITE_APP_API_URL);
     },
   },
   setup() {

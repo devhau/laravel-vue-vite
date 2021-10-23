@@ -1,6 +1,7 @@
 <script>
 import { defineComponent, h } from "vue";
-import { formatDate } from "@devhau/utils";
+import { AUTH_REQUEST } from '@/common/action';
+import Profile from '@/components/profile/index.vue';
 export default defineComponent({
   name: "HomePage",
   data() {
@@ -21,7 +22,7 @@ export default defineComponent({
           {
             className: "",
             icon: () => "bi bi-box",
-            title: () => `Dashboard(${formatDate(new Date())})`,
+            title: () => this.$t('menu.dashboard'),
             router: {
               name: "Home",
             },
@@ -29,9 +30,9 @@ export default defineComponent({
           {
             className: "",
             icon: "bi bi-box",
-            title: "Gantt",
+            title: "User",
             router: {
-              name: "Gantt",
+              name: "User",
             },
           },
           {
@@ -106,11 +107,9 @@ export default defineComponent({
             {
               className: "vh-profile",
               icon: "bi bi-box",
-              title: "Profile",
+              title: () => this.$store.state.user?.name,
               link: "",
-              sub: () => {
-                return h("h1", {}, "Hello");
-              },
+              sub: () => h(Profile, {}),
             },
           ],
         },
@@ -142,8 +141,15 @@ export default defineComponent({
       immediate: true
     }
   },
+  created: () => {
+  },
+  beforeMount() {
+    if (this.$store.getters.isAuthenticated) {
+      this.$store.dispatch(AUTH_REQUEST);
+    }
+  },
   mounted() {
-    console.log(this.$router);
+
   }
 });
 </script>
@@ -155,5 +161,6 @@ export default defineComponent({
     :layout="layout"
   >
     <router-view></router-view>
+    {{this.$store.state.auth.loggin}}
   </vh-application>
 </template>

@@ -2,9 +2,10 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import api from '@/api/auth';
 
-import HomeComponent from './components/kanban.vue';
+import HomePage from '@/views/home/dashboard.vue';
 import LoginPage from '@/views/auth/login.vue';
 import RegisterPage from '@/views/auth/register.vue';
+import UserPage from '@/views/user/index.vue';
 const layout = {
     None: 'None',
     NoSidebar: 'NoSidebar',
@@ -15,7 +16,12 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: HomeComponent,
+        component: HomePage,
+    },
+    {
+        path: '/user',
+        name: 'User',
+        component: UserPage,
     },
     {
         path: '/login',
@@ -47,7 +53,6 @@ router.beforeEach((to, from, next) => {
     const authRequired = !publicPages.includes(to.path);
     const loggedIn = api.checkAuth();
     if (authRequired && !loggedIn) {
-        console.log('login');
         return next('/login');
     }
     if ((loggedIn && to.path === '/login')) {

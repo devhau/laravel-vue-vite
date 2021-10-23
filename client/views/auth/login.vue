@@ -8,6 +8,7 @@
         <div class="mb-2">
           <label for="account">Account</label>
           <vh-input
+            v-model="account"
             id="account"
             placeholder="Account"
           />
@@ -15,6 +16,7 @@
         <div class="mb-2">
           <label for="password">Password</label>
           <vh-input
+            v-model="password"
             type="password"
             id="password"
             placeholder="Password"
@@ -35,7 +37,7 @@
             </vh-button>
           </vh-col>
           <vh-col>
-            <vh-button>
+            <vh-button @click="doLogin">
               Login
             </vh-button>
           </vh-col>
@@ -45,7 +47,23 @@
   </vh-page>
 </template>
 <script>
+import auth from '@/api/auth';
 export default {
+  data() {
+    return { password: "", account: "" };
+  },
+  methods: {
+    doLogin() {
+      auth.login({
+        email: this.account,
+        device_name: 'web',
+        password: this.password
+      }).then(({ data }) => {
+        auth.setToken(data.token);
+        this.$router.push({ name: 'Home' });
+      });
+    }
+  },
   setup() {
 
   },

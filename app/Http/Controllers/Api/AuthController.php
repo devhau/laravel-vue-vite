@@ -23,7 +23,7 @@ class AuthController extends ApiController
         User::create([
             'name' =>  $request->input('name'),
             'email' =>  $request->input('email'),
-            'password' => $request->input('password'),
+            'password' => Hash::make($request->input('password')),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10)
         ]);
@@ -53,7 +53,6 @@ class AuthController extends ApiController
     public function user(Request $request)
     {
         $user = $request->user();
-
         return $this->JsonOK([
             'user' => $user,
             'isAdmin' => $user->isSuperAdmin(),

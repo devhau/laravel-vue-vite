@@ -1,0 +1,22 @@
+.vh-profile {
+    .vh-menu-component-body {
+        background: unset !important;
+        border: unset !important;
+        .vh-profile-box {
+            border-bottom-left-radius: 1px;
+            border-bottom-right-radius: 1px;
+            background: #ccc;
+            border: 1px solid #ccc;
+            margin-right: 2px;
+            .vh-profile-box__item {
+                padding: 2px;
+                min-height: 20px;
+                min-width: 150px;
+                border-bottom: 1px solid #222;
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}

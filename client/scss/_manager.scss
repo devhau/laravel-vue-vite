@@ -1,0 +1,40 @@
+.vh-manager {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .vh-manager__header {
+        min-height: 20px;
+        flex: none;
+        display: flex;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        .vh-manager__header--left {
+            padding: 1px;
+            flex: auto;
+        }
+        .vh-manager__header--center {
+            padding: 1px;
+            flex: none;
+        }
+        .vh-manager__header--right {
+            padding: 1px;
+            flex: auto;
+            text-align: right;
+            .form-control {
+                display: inline-block;
+            }
+        }
+    }
+    .vh-manager__body {
+        padding: 1px;
+        min-height: 200px;
+        flex: auto;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+    .vh-manager__footer {
+        padding: 1px;
+        min-height: 200px;
+        flex: none;
+    }
+}
