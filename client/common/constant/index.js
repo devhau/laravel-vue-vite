@@ -40,3 +40,8 @@ export const HeaderFilterType = {
     RANGE_NUMBER: 4,
     RANGE_DATE: 5,
 };
+export const APPLICATION_LAYOUT = {
+    None: 'None',
+    NoSidebar: 'NoSidebar',
+    Sidebar: 'Sidebar'
+};

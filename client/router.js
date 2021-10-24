@@ -1,45 +1,8 @@
 
 import { createRouter, createWebHashHistory } from "vue-router";
 import api from '@/api/auth';
+import routes from '@/routes';
 
-import HomePage from '@/views/home/dashboard.vue';
-import LoginPage from '@/views/auth/login.vue';
-import RegisterPage from '@/views/auth/register.vue';
-import UserPage from '@/views/user/index.vue';
-const layout = {
-    None: 'None',
-    NoSidebar: 'NoSidebar',
-    Sidebar: 'Sidebar'
-};
-
-const routes = [
-    {
-        path: '/',
-        name: 'Home',
-        component: HomePage,
-    },
-    {
-        path: '/user',
-        name: 'User',
-        component: UserPage,
-    },
-    {
-        path: '/login',
-        name: 'Login',
-        component: LoginPage,
-        meta: {
-            layout: layout.None
-        }
-    },
-    {
-        path: '/register',
-        name: 'Register',
-        component: RegisterPage,
-        meta: {
-            layout: layout.None
-        }
-    },
-];
 const publicPages = ['/login', '/register'];
 
 const router = createRouter({
@@ -52,9 +15,15 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     const authRequired = !publicPages.includes(to.path);
     const loggedIn = api.checkAuth();
-    if (authRequired && !loggedIn) {
-        return next('/login');
+    //check auth
+    if ((to.meta?.can || authRequired) && !loggedIn) {
+        return next({ name: 'Login' });
     }
+    //check permisison for router
+    if (to.meta?.can && !api.$can(to.meta?.can)) {
+        return next({ name: 'Login' });
+    }
+    //check page is login and go to home
     if ((loggedIn && to.path === '/login')) {
         return next('/');
     }

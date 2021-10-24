@@ -16,7 +16,7 @@ class UserController  extends ApiController
     public function getPermission($id,  $guard_name, Request $request)
     {
         $allPermission = $this->modelRepository->getAllPermission($guard_name);
-        $modules = $allPermission->groupBy('module_name');
+        $modules = $allPermission->groupBy('module');
         $allRoles = $this->modelRepository->getAllRole($guard_name);
         $userPermissions = $this->modelRepository->getPermissionByUserId($id, $guard_name);
         $userRoles = $this->modelRepository->getRoleByUserId($id, $guard_name);

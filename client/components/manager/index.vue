@@ -1,43 +1,155 @@
 <template>
   <div class="vh-manager">
     <vh-modal
+      :show="showFormConfirmRemove"
+      :title="$t('common.manager.title.remove')"
+      @hide="showFormConfirmRemove=false"
+    >
+      <slot
+        name="content_confirmDelete"
+        :data="dataUpdate"
+        :app="this"
+      ></slot>
+      {{!$slots['content_confirmDelete']&&$t(optionConfig?.title?.confirmDelete)}}
+      <template #footer="{}">
+        <vh-button
+          size="sm"
+          color="warning"
+          :beforeIcon="optionConfig?.icon?.cancel??''"
+          @click="onHideForm()"
+        >{{$t(optionConfig?.button?.cancel)}}</vh-button>
+        <vh-button
+          size="sm"
+          color="danger"
+          :beforeIcon="optionConfig?.icon?.remove??''"
+          @click="onRemoveData()"
+        >{{$t(optionConfig?.button?.remove)}}</vh-button>
+      </template>
+    </vh-modal>
+    <vh-modal
+      :size="optionConfig.formsize(isNew,dataUpdate)"
+      :title="isNew?$t('common.manager.title.new'):$t('common.manager.title.edit')"
       :show="showFormUpdate"
       @hide="showFormUpdate=false"
     >
       <slot
         name="form_update"
         :data="dataUpdate"
+        :app="this"
         :isNew="isNew"
-      />
+      ></slot>
+      <template #footer="{}">
+        <vh-button
+          size="sm"
+          color="warning"
+          :beforeIcon="optionConfig?.icon?.cancel??''"
+          @click="onHideForm()"
+        >{{$t(optionConfig?.button?.cancel)}}</vh-button>
+        <vh-button
+          size="sm"
+          :beforeIcon="optionConfig?.icon?.update??''"
+          @click="onUpdateData()"
+        >{{$t(optionConfig?.button?.update)}}</vh-button>
+      </template>
     </vh-modal>
     <div class="vh-manager__header">
       <div class="vh-manager__header--left">
         <vh-button
+          size="sm"
           :beforeIcon="optionConfig?.icon?.new??''"
           @click="onShowFormUpdate({},true)"
         >{{$t(optionConfig?.button?.new)}}</vh-button>
+        <slot
+          name="header_left"
+          :app="this"
+        />
       </div>
       <div class="vh-manager__header--center">
+        <slot name="header_center" />
       </div>
       <div class="vh-manager__header--right">
+        <slot
+          name="header_right"
+          :app="this"
+        />
         <vh-input
           placeholder="Search"
           style="width:150px"
+          @keypress="onInputSearch"
+          @blur="(e)=>e.target.value=this.search"
         />
       </div>
     </div>
     <div class="vh-manager__body">
       <vh-table
         :source="source"
-        :option="optionConfig"
+        :option="optionConfigAction"
         :sort="sort"
         :filter="filter"
         :start="row_from"
         @sort="(column,val)=>onSort(column,val)"
         @filter="(column,val)=>onFilter(column,val)"
-      ></vh-table>
+      >
+        <template #field_button_action="{row,index,start}">
+          <span class="vh-manager__body--action">
+            <slot
+              name="action_before"
+              :row="row"
+              :app="this"
+              :index="index"
+              :start="start"
+            >
+            </slot>
+            <vh-button
+              size="sm"
+              color="danger"
+              @click="onShowConfirmRemove(row)"
+              :beforeIcon="optionConfig?.icon?.remove??''"
+            >{{$t(optionConfig?.button?.remove)}}</vh-button>
+            <vh-button
+              size="sm"
+              :beforeIcon="optionConfig?.icon?.edit??''"
+              @click="onShowFormUpdate(row)"
+            >{{$t(optionConfig?.button?.edit)}}</vh-button>
+            <slot
+              name="action_after"
+              :row="row"
+              :app="this"
+              :index="index"
+              :start="start"
+            >
+            </slot>
+          </span>
+        </template>
+      </vh-table>
     </div>
-    <div class="vh-manager__footer"></div>
+    <div class="vh-manager__footer">
+      <vh-row>
+        <vh-col
+          class="col-none"
+          style="width: 105px;flex:none;"
+        >
+          <vh-select
+            v-model="size_page"
+            class="vh-inline-block"
+            :source="pages"
+            @change="onChangePage(1)"
+          />
+        </vh-col>
+        <vh-col>
+          <vh-pagination
+            v-if="this.last_page>0"
+            :current="current_page"
+            :start="page_start"
+            :end="page_end"
+            :last="last_page"
+            @page="(_page)=>onChangePage(_page)"
+            next=">>"
+            previous="<<"
+          />
+        </vh-col>
+      </vh-row>
+    </div>
   </div>
 </template>
 <script>
@@ -45,18 +157,61 @@ import { config as configDefault } from './config';
 export default {
   props: {
     option: {},
+    showAction: {
+      default: true
+    },
+    formsize: {
+      defalut: 'sm'
+    }
+  },
+  computed: {
+    page_start() {
+      if (this.current_page - 3 > 0)
+        return this.current_page - 3;
+      return 1;
+    },
+    page_end() {
+      if (this.current_page + 3 < this.last_page)
+        return this.current_page + 3;
+      return this.last_page;
+    },
+    optionConfigAction() {
+      if (!this.showAction) {
+        return this.optionConfig;
+      }
+      let { columns } = this.optionConfig;
+
+      let title = this.$t('common.manager.title.action');
+
+      columns = [...columns,
+      {
+        title,
+        field: 'button_action',
+        isSort: false,
+        isFilter: false
+      }
+      ];
+      return {
+        ...this.optionConfig,
+        columns: columns
+      };
+    }
   },
   data() {
     return {
       optionConfig: {},
       showFormUpdate: false,
+      showFormConfirmRemove: false,
       isNew: false,
       dataUpdate: {},
+      pages: [10, 15, 25, 50, 100],
       source: [],
       search: "",
       sort: {},
       filter: {},
       current_page: 0,
+      size_page: 15,
+      from_page: 0,
       last_page: 0,
       per_page: 15,
       row_from: 0,
@@ -64,7 +219,14 @@ export default {
       total: 0,
     };
   },
+
   methods: {
+    onInputSearch(e) {
+      if (e.keyCode == 13) {
+        this.search = e.target.value;
+        this.onSearch();
+      }
+    },
     onSort(column, val) {
       this.sort[column.field] = val;
       this.$emit('sort', column, val);
@@ -80,7 +242,9 @@ export default {
       api.getAll({
         sort: this.sort,
         filter: this.filter,
-        search: this.search
+        search: this.search,
+        page: this.current_page,
+        per_page: this.size_page
       }).then(({ data: rs }) => {
         if (rs && rs.OK) {
           let { data, current_page, from, to, last_page, total } = rs.data;
@@ -93,9 +257,45 @@ export default {
         }
       })
     },
+    onChangePage(_page) {
+      this.current_page = _page;
+      this.onSearch();
+    },
+    onRemoveData() {
+      let { api, validate, itemKey } = this.optionConfig;
+      api.remove(this.dataUpdate[itemKey]).then(() => {
+        this.onSearch();
+        this.onHideForm();
+      });
+    },
+    onUpdateData() {
+      let { api, validate, itemKey } = this.optionConfig;
+      if (!validate || validate({ data: this.dataUpdate, isNew: this.isNew })) {
+        if (this.isNew) {
+          api.add(this.dataUpdate).then((rs) => {
+            this.onSearch();
+            this.onHideForm();
+          });
+        } else {
+          api.edit(this.dataUpdate[itemKey], this.dataUpdate).then((rs) => {
+            this.onSearch();
+            this.onHideForm();
+          });
+        }
+      }
+    },
+    onShowConfirmRemove(data) {
+      this.dataUpdate = JSON.parse(JSON.stringify(data));
+      this.showFormConfirmRemove = true;
+    },
     onShowFormUpdate(data, isNew = false) {
-      this.dataUpdate = data;
+      this.isNew = isNew;
+      this.dataUpdate = JSON.parse(JSON.stringify(data));
       this.showFormUpdate = true;
+    },
+    onHideForm() {
+      this.showFormUpdate = false;
+      this.showFormConfirmRemove = false;
     }
   },
   created() {
@@ -103,7 +303,6 @@ export default {
   },
   mounted() {
     this.optionConfig = Object.assign(this.option, configDefault);
-    console.log(this.optionConfig);
     this.onSearch();
   },
   watch: {

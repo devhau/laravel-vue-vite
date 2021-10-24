@@ -1,6 +1,13 @@
 export default {
     hello: 'Xin chào',
     manager: {
+        title: {
+            new: 'Thêm mới',
+            edit: 'Chỉnh sửa',
+            action: 'Hành động',
+            confirmDelete: 'Bạn có muốn xóa bảng ghi này không?',
+            remove: 'Xóa dữ liệu'
+        },
         button: {
             new: 'Thêm mới',
             edit: 'Chỉnh sửa',

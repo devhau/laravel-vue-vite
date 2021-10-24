@@ -11,15 +11,24 @@
         .vh-manager__header--left {
             padding: 1px;
             flex: auto;
+            .btn {
+                margin: 5px;
+            }
         }
         .vh-manager__header--center {
             padding: 1px;
             flex: none;
+            .btn {
+                margin: 5px;
+            }
         }
         .vh-manager__header--right {
             padding: 1px;
             flex: auto;
             text-align: right;
+            .btn {
+                margin: 5px;
+            }
             .form-control {
                 display: inline-block;
             }
@@ -27,14 +36,18 @@
     }
     .vh-manager__body {
         padding: 1px;
-        min-height: 200px;
+        min-height: 50px;
         flex: auto;
         border-top: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
+        .vh-manager__body--action {
+            .btn {
+                margin: 1px 5px;
+            }
+        }
     }
     .vh-manager__footer {
-        padding: 1px;
-        min-height: 200px;
+        padding: 5px 1px;
+        min-height: 20px;
         flex: none;
     }
 }

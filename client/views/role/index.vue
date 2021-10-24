@@ -1,43 +1,40 @@
 <template>
   <vh-page>
-    <h3>Thông tin nhân viên</h3>
+    <h3>Vai trò</h3>
     <manager :option="option">
       <template #form_update="{data,isNew}">
         <div class="mb-3">
           <label
             for="idName"
             class="form-label"
-          >Họ tên</label>
+          >Mã vai trò</label>
           <vh-input
             id="idName"
+            :disabled="!isNew"
             v-model="data.name"
             placeholder="name"
           />
         </div>
         <div class="mb-3">
           <label
-            for="idEmail"
+            for="idtitle"
             class="form-label"
-          >Email</label>
+          >Tên quyền</label>
           <vh-input
-            id="idEmail"
-            v-model="data.email"
-            placeholder="email"
+            id="idtitle"
+            v-model="data.title"
+            placeholder="title"
           />
         </div>
-        <div
-          class="mb-3"
-          v-if="isNew"
-        >
+        <div class="mb-3">
           <label
-            for="idPassword"
+            for="idguard_name"
             class="form-label"
-          >Mật khẩu</label>
+          >Tên guard</label>
           <vh-input
-            id="idPassword"
-            type="password"
-            v-model="data.password"
-            placeholder="password"
+            id="idguard_name"
+            v-model="data.guard_name"
+            placeholder="guard_name"
           />
         </div>
       </template>
@@ -46,7 +43,7 @@
 </template>
 <script>
 import Manager from '@/components/manager/index.vue';
-import api from '@/api/user';
+import api from '@/api/role';
 export default {
   components: { Manager },
 
@@ -64,12 +61,12 @@ export default {
             dataCell: (item, index, start) => index + start
           },
           {
-            title: 'Họ tên',
+            title: 'name',
             field: 'name'
           },
           {
-            title: 'Email',
-            field: 'email'
+            title: 'guard',
+            field: 'guard_name'
           }
         ]
       },

@@ -1,20 +1,69 @@
 {
   "client/main.js": {
-    "file": "assets/main.23f65429.js",
+    "file": "assets/main.305ed8a2.js",
     "src": "client/main.js",
     "isEntry": true,
     "imports": [
-      "_vendor.92c235f4.js"
+      "_vendor.2231596e.js"
+    ],
+    "dynamicImports": [
+      "client/views/user/index.vue",
+      "client/views/role/index.vue",
+      "client/views/permission/index.vue"
     ],
     "css": [
-      "assets/main.9fe1835d.css"
+      "assets/main.498ba971.css"
     ],
     "assets": [
       "assets/bootstrap-icons.64c00203.woff2",
       "assets/bootstrap-icons.828fa79d.woff"
     ]
   },
-  "_vendor.92c235f4.js": {
-    "file": "assets/vendor.92c235f4.js"
+  "_vendor.2231596e.js": {
+    "file": "assets/vendor.2231596e.js"
+  },
+  "client/views/user/index.vue": {
+    "file": "assets/index.68f18940.js",
+    "src": "client/views/user/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index.56c0fb8c.js",
+      "client/main.js",
+      "_vendor.2231596e.js"
+    ]
+  },
+  "_index.e51c7561.js": {
+    "file": "assets/index.e51c7561.js",
+    "imports": [
+      "_vendor.2231596e.js",
+      "client/main.js"
+    ]
+  },
+  "client/views/role/index.vue": {
+    "file": "assets/index.ed3c59b8.js",
+    "src": "client/views/role/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index.56c0fb8c.js",
+      "client/main.js",
+      "_vendor.2231596e.js"
+    ]
+  },
+  "client/views/permission/index.vue": {
+    "file": "assets/index.8ea86dde.js",
+    "src": "client/views/permission/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index.56c0fb8c.js",
+      "client/main.js",
+      "_vendor.2231596e.js"
+    ]
+  },
+  "_index.56c0fb8c.js": {
+    "file": "assets/index.56c0fb8c.js",
+    "imports": [
+      "_vendor.2231596e.js",
+      "client/main.js"
+    ]
   }
 }

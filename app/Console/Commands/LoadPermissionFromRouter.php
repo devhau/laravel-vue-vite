@@ -53,7 +53,7 @@ class LoadPermissionFromRouter extends Command
             // Only Auth, that's using perrmisson for router.
             $midd = $value->gatherMiddleware();
             if (in_array('api', $midd)) {
-                $guard_name = "api";
+                $guard_name = "sanctum";
             }
             $checkAuth = false;
             foreach ($midd as $item) {
@@ -92,7 +92,7 @@ class LoadPermissionFromRouter extends Command
         $title = $name;
         if ($module == "api") {
             $module = $arrName[1];
-            $guard_name = "api";
+            $guard_name = "sanctum";
         } else {
             $guard_name = "web";
         }
@@ -115,7 +115,7 @@ class LoadPermissionFromRouter extends Command
                 $permission = [];
                 $permission['name'] = $name;
                 $permission['title'] = $title;
-                $permission['module_name'] = $module;
+                $permission['module'] = $module;
                 $permission['guard_name'] = $guard_name;
                 $this->permissionRepository->create($permission);
             }

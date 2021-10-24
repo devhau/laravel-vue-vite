@@ -1,5 +1,14 @@
 export const config = {
+    itemKey: 'id',
+    formsize: (isNew, data) => '',
     empty: 'common.manager.table.empty',
+    title: {
+        new: 'common.manager.title.new',
+        edit: 'common.manager.title.edit',
+        confirmDelete: 'common.manager.title.confirmDelete',
+        remove: 'common.manager.title.remove',
+        action: 'common.manager.title.action',
+    },
     button: {
         new: 'common.manager.button.new',
         edit: 'common.manager.button.edit',
@@ -13,13 +22,13 @@ export const config = {
     },
     icon: {
         new: 'bi bi-plus-square',
-        edit: 'bi bi-plus-square',
-        remove: 'bi bi-plus-square',
-        delete: 'bi bi-plus-square',
-        cancel: 'bi bi-plus-square',
-        active: 'bi bi-plus-square',
+        edit: 'bi bi-pencil-square',
+        remove: 'bi bi-trash',
+        delete: 'bi bi-trash',
+        cancel: 'bi bi-x',
+        active: 'bi bi-check-square',
         view: 'bi bi-plus-square',
         detail: 'bi bi-plus-square',
-        update: 'bi bi-plus-square'
+        update: 'bi bi-pencil-square'
     },
 };

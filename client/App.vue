@@ -28,29 +28,36 @@ export default defineComponent({
             },
           },
           {
-            className: "",
             icon: "bi bi-box",
-            title: "User",
-            router: {
-              name: "User",
-            },
+            title: "Bảo mật",
+            sub: [
+              {
+                className: "",
+                icon: "bi bi-box",
+                title: "Tài khoản",
+                router: {
+                  name: "User",
+                },
+              },
+              {
+                className: "",
+                icon: "bi bi-box",
+                title: "Vai trò",
+                router: {
+                  name: "Role",
+                },
+              },
+              {
+                className: "",
+                icon: "bi bi-box",
+                title: "Quyền",
+                router: {
+                  name: "Permission",
+                },
+              },
+            ]
           },
-          {
-            className: "vh-user",
-            icon: "bi bi-box",
-            title: "Accordion",
-            router: {
-              name: "Accordion",
-            },
-          },
-          {
-            className: "",
-            icon: "bi bi-box",
-            title: "Alert",
-            router: {
-              name: "Alert",
-            },
-          },
+
         ],
         header: {
           left: [

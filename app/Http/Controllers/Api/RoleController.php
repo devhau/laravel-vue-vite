@@ -17,7 +17,7 @@ class RoleController extends ApiController
     {
         $permissions = $id ? $this->modelRepository->getPermissionByRoleId($id, $guard_name) : [];
         $all_permissions = $this->modelRepository->getAllPermission($guard_name);
-        $modules = $all_permissions->groupBy('module_name');
+        $modules = $all_permissions->groupBy('module');
         return $this->JsonOK([
             'permissions' => $permissions,
             'modules' => $modules,
