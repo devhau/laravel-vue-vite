@@ -1,6 +1,7 @@
 <script>
-import { defineComponent, h } from "vue";
+import { defineComponent, h, nextTick } from "vue";
 import { AUTH_REQUEST } from '@/common/action';
+import * as auth from '@/common/auth/index';
 import Profile from '@/components/profile/index.vue';
 export default defineComponent({
   name: "HomePage",
@@ -154,6 +155,12 @@ export default defineComponent({
     if (this.$store.getters.isAuthenticated) {
       this.$store.dispatch(AUTH_REQUEST);
     }
+    nextTick(() => {
+      if (!auth.checkRouterAuth(this.$route)) {
+        this.$router.push({ name: 'Login' });
+      }
+    });
+
   },
   mounted() {
 

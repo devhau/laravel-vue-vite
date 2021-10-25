@@ -16,16 +16,12 @@ class AddColumnTitlePermission extends Migration
         $tableNames = config('permission.table_names');
 
         Schema::table($tableNames['permissions'], function (Blueprint $table) {
-            $table->string('title', 256);
-            $table->string('module', 256);
+            $table->string('title', 256)->nullable();
+            $table->string('module', 256)->nullable();
         });
         Schema::table($tableNames['roles'], function (Blueprint $table) {
-            $table->string('title', 256);
+            $table->string('title', 256)->nullable();
         });
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('full_name', 256);
-        });
-        //
     }
 
     /**
@@ -44,9 +40,5 @@ class AddColumnTitlePermission extends Migration
         Schema::table($tableNames['roles'], function (Blueprint $table) {
             $table->dropColumn('title');
         });
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('full_name');
-        });
-        //
     }
 }

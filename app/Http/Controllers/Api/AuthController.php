@@ -39,6 +39,7 @@ class AuthController extends ApiController
         ]);
 
         $user = User::where('email', $request->email)->first();
+        if($user == null) return response()->json(['error' => 'login_error'], 401);
         $check = Hash::check($request->password, $user->password);
         if (!$user || !$check) {
             throw ValidationException::withMessages([

@@ -151,4 +151,5 @@ return [
 
         'store' => 'default',
     ],
+    "guest" => []
 ];

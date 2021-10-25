@@ -1,3 +1,6 @@
 export default {
-    title: 'Vai trò'
+    title: 'Vai trò',
+    button: {
+        permission: 'Phân quyền'
+    }
 }
