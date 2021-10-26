@@ -1,16 +1,31 @@
 <template>
   <vh-modal
+    size='lg'
     :title="this.modelValue.name"
     :show="show"
     @hide="onCloseForm"
   >
-    <vh-group-checkbox
-      style="max-height:500px"
-      v-if="modules"
-      v-model="permissions"
-      :source="source"
-      :itemDisabled="(val)=>this.modelValue.name==='supper-admin'"
-    />
+    <vh-row>
+      <vh-col>
+        <vh-group-checkbox
+          style="max-height:500px"
+          v-model="roles"
+          :source="sourceRole"
+          :itemDisabled="(val,sub)=>sub !== undefined"
+        />
+      </vh-col>
+      <vh-col>
+        <h4>Permission</h4>
+        <vh-group-checkbox
+          style="max-height:500px"
+          v-if="modules"
+          v-model="permissions"
+          :source="source"
+          :itemDisabled="(val)=>this.modelValue.name==='supper-admin'"
+        />
+      </vh-col>
+
+    </vh-row>
     <template #footer="{}">
       <vh-button
         size="sm"
@@ -27,7 +42,7 @@
   </vh-modal>
 </template>
 <script>
-import api from '@/api/role';
+import api from '@/api/user';
 export default {
   props: {
     show: {
@@ -42,13 +57,25 @@ export default {
     },
     onUpdateData() {
       api.putPermission(this.modelValue?.id, {
-        permissions: this.permissions
+        permissions: this.permissions,
+        roles: this.roles
       }).then(() => {
         this.onCloseForm();
       });
     }
   },
   computed: {
+    sourceRole() {
+      return [{
+        text: 'All Role',
+        sub: this.allroles.map((item) => {
+          return {
+            text: item.title,
+            value: item.name,
+          };
+        })
+      }]
+    },
     source() {
       return Object.keys(this.modules).map((text) => {
         let sub = this.modules[text].map((item) => {
@@ -67,14 +94,18 @@ export default {
   data() {
     return {
       modules: null,
-      permissions: []
+      permissions: [],
+      roles: [],
+      allroles: []
     };
   },
   mounted() {
     api.getPermission(this.modelValue?.id, 'web').then(({ data }) => {
-      let { modules, permissions } = data.data;
+      let { modules, permissions, roles, allroles } = data.data;
       this.modules = modules;
       this.permissions = permissions;
+      this.roles = roles;
+      this.allroles = allroles;
     })
   },
   setup() {

@@ -1,6 +1,8 @@
 export const config = {
     itemKey: 'id',
     formsize: (isNew, data) => '',
+    checkButtonDelete: ({ row, index, start }) => true,
+    checkButtonUpdate: ({ row, index, start }) => true,
     empty: 'common.manager.table.empty',
     title: {
         new: 'common.manager.title.new',

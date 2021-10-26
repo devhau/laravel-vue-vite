@@ -2,8 +2,9 @@
   <vh-page>
     <h3>{{$t('module.role.title')}}</h3>
     <manager :option="option">
-      <template #action_after="{row,app,index,start}">
+      <template #action_after="{row}">
         <vh-button
+          v-if=" row['name'] != 'supper-admin'"
           beforeIcon="bi bi-shield"
           color="warning"
           size="sm"
@@ -47,12 +48,12 @@
         </div>
       </template>
     </manager>
-    <vh-modal
-      :show="showModalPermission"
-      @hide="this.showModalPermission = false"
-    >
-      <Permission :data="DataRow" />
-    </vh-modal>
+    <Permission
+      v-if="showModalPermission"
+      v-model:show="showModalPermission"
+      v-model="DataRow"
+    />
+
   </vh-page>
 </template>
 <script>
@@ -72,6 +73,8 @@ export default {
       showModalPermission: false,
       DataRow: {},
       option: {
+        checkButtonDelete: ({ row, index, start }) => row['name'] != 'supper-admin',
+        checkButtonUpdate: ({ row, index, start }) => row['name'] != 'supper-admin',
         api: {
           ...api
         },
@@ -85,6 +88,10 @@ export default {
           {
             title: 'name',
             field: 'name'
+          },
+          {
+            title: 'title',
+            field: 'title'
           },
           {
             title: 'guard',

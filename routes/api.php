@@ -29,10 +29,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     //mananger
     Route::apiResource('user', UserController::class);
-    Route::get('user/permission/{id}/{guard_name}', [UserController::class, 'getPermission'])->name('user.view-permission');
-    Route::put('user/permission/{id}', [UserController::class, 'putPermission'])->name('user.view-permission');
+    Route::get('user/permission/{id}/{guard_name}', [UserController::class, 'getPermission'])->name('user.permission');
+    Route::put('user/permission/{id}', [UserController::class, 'putPermission'])->name('user.permission');
     Route::apiResource('role', RoleController::class);
     Route::get('role/permission/{id}/{guard_name}', [RoleController::class, 'getPermission'])->name('role.permission');
+    Route::put('role/permission/{id}', [RoleController::class, 'putPermission'])->name('role.permission');
     Route::post('permission/update', [PermissionController::class, 'updatePermission'])->name('permission.load-router');
     Route::apiResource('permission', PermissionController::class);
 });

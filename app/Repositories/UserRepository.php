@@ -66,14 +66,13 @@ class UserRepository extends BaseRepository
         }
         return [];
     }
-    public function syncPermission($id, $roles, $permissions, $guard_name)
+    public function syncPermission($id, $roles, $permissions)
     {
         if ($id > 0) {
             $user = $this->model->newQuery()->find($id);
             if ($user) {
                 if (!is_array($roles)) $roles = [$roles];
                 if (!is_array($permissions)) $permissions = [$permissions];
-                $user->FixGuardName = $guard_name;
                 $user->syncRoles($roles);
                 $user->syncPermissions($permissions);
                 return true;

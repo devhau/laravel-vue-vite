@@ -40,4 +40,9 @@ class RoleRepository extends BaseRepository
     {
         return Permission::where('guard_name', $guard_name)->whereIn('name', $permissions)->get();
     }
+    public function syncPermissions($role_id, $permissions)
+    {
+        $model = $this->find($role_id);
+        $model->syncPermissions($permissions);
+    }
 }

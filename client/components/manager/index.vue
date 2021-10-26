@@ -101,12 +101,14 @@
             >
             </slot>
             <vh-button
+              v-if="optionConfig.checkButtonDelete({row,index,start})"
               size="sm"
               color="danger"
               @click="onShowConfirmRemove(row)"
               :beforeIcon="optionConfig?.icon?.remove??''"
             >{{$t(optionConfig?.button?.remove)}}</vh-button>
             <vh-button
+              v-if="optionConfig.checkButtonUpdate({row,index,start})"
               size="sm"
               :beforeIcon="optionConfig?.icon?.edit??''"
               @click="onShowFormUpdate(row)"
@@ -299,16 +301,16 @@ export default {
     }
   },
   created() {
-    this.optionConfig = Object.assign(this.option, configDefault);
+    this.optionConfig = Object.assign(configDefault, this.option);
   },
   mounted() {
-    this.optionConfig = Object.assign(this.option, configDefault);
+    this.optionConfig = Object.assign(configDefault, this.option);
     this.onSearch();
   },
   watch: {
     option: {
       handler: function (_optionConfig) {
-        this.optionConfig = Object.assign(_optionConfig, configDefault);
+        this.optionConfig = Object.assign(configDefault, _optionConfig);
       },
       deep: true,
       immediate: true

@@ -23,14 +23,17 @@ class RoleController extends ApiController
             'modules' => $modules,
         ]);
     }
+    public function putPermission($id, Request $request)
+    {
+        $userPermissions = $request->input('permissions');
+        return $this->JsonOK($this->modelRepository->syncPermissions($id,  $userPermissions) ? 'OK' : 'fails');
+    }
     protected function storeAfter(Request $request, $input, $model)
     {
-        $model->_GuardName = $model->guard_name;
         $model->syncPermissions($input['permissions']);
     }
     protected function updateAfter(Request $request, $id, $input, $model)
     {
-        $model->_GuardName = $model->guard_name;
         $model->syncPermissions($input['permissions']);
     }
 }

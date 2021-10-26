@@ -43,10 +43,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public $_GuardName;
     protected function getDefaultGuardName(): string
     {
-        return $this->_GuardName ? $this->_GuardName :  Guard::getDefaultName($this);
+        return 'web';
     }
     public function isSuperAdmin(): bool
     {

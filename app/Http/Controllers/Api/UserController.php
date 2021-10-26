@@ -32,17 +32,16 @@ class UserController  extends ApiController
         $userPermissions = $this->modelRepository->getPermissionByUserId($id, $guard_name);
         $userRoles = $this->modelRepository->getRoleByUserId($id, $guard_name);
         return $this->JsonOK([
-            'userRoles' => $userRoles,
-            'userPermissions' => $userPermissions,
-            'allRoles' => $allRoles,
+            'roles' => $userRoles,
+            'permissions' => $userPermissions,
+            'allroles' => $allRoles,
             'modules' => $modules,
         ]);
     }
     public function putPermission($id, Request $request)
     {
-        $userPermissions = $request->input('userPermissions');
-        $userRoles = $request->input('userRoles');
-        $guard_name = $request->input('guardName');
-        return $this->JsonOK($this->modelRepository->syncPermission($id, $userRoles, $userPermissions, $guard_name) ? 'OK' : 'fails');
+        $userPermissions = $request->input('permissions');
+        $userRoles = $request->input('roles');
+        return $this->JsonOK($this->modelRepository->syncPermission($id, $userRoles, $userPermissions) ? 'OK' : 'fails');
     }
 }
