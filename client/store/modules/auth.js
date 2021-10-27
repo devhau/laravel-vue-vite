@@ -1,40 +1,55 @@
 import auth from '@/api/auth';
-import { AUTH_REQUEST, AUTH_SUCCESS, AUTH_ERROR, AUTH_LOGOUT } from '@/common/action';
+import { AUTH_CHECK, AUTH_REQUEST, AUTH_SUCCESS, AUTH_ERROR, AUTH_LOGOUT } from '@/common/action';
 const initState = async () => {
     const empty = {
-        loggin: auth.checkAuth(),
+        loggin: undefined,
         user: {},
-        status: ''
+        permissions: [],
+        status: '',
+        isAdmin: false
     };
     return empty;
 }
 export default {
     state: initState(),
     actions: {
-        [AUTH_REQUEST]: ({ commit, dispatch }, user) => {
+        [AUTH_REQUEST]: ({ commit, dispatch }, app) => {
             commit(AUTH_REQUEST);
-            auth.getUserMe().then(({ data }) => {
-                if (data && data.OK) {
-                    commit(AUTH_SUCCESS, data.data);
+            auth.getUserMe().then((rs) => {
+                if (rs.status != 401 && rs?.data) {
+                    commit(AUTH_SUCCESS, rs?.data?.data);
                 } else {
                     commit(AUTH_ERROR);
                     commit(AUTH_LOGOUT);
                 }
+                dispatch(AUTH_CHECK, app);
             });
+        },
+        [AUTH_CHECK]: ({ commit, dispatch }, app) => {
+            if (app && app.checkPermission) {
+                app.checkPermission();
+            }
         }
     },
     getters: {
-        isAuthenticated: () => auth.checkAuth()
+        isAuthenticated: (state) => (flgLoading = true) => (flgLoading && state.status == 'loading') || state.loggin,
+        canPermission: (state) => (permisison, flgLoading = true) => {
+            if (state.status == 'loading' && flgLoading) return true;
+            if (!state.loggin) return false;
+            if (!state.isAdmin && !state.permissions.includes(permisison)) return false;
+            return true;
+        }
     },
     mutations: {
         [AUTH_REQUEST]: state => {
-            state.status = "loading";
+            state.status = 'loading';
         },
         [AUTH_SUCCESS]: (state, data) => {
-            console.log(data);
             state.status = "done";
             state.loggin = true;
             state.user = data.user;
+            state.isAdmin = data.isAdmin;
+            state.permissions = data.permissions;
         },
         [AUTH_ERROR]: state => {
             state.status = 'error';
@@ -42,7 +57,7 @@ export default {
         },
         [AUTH_LOGOUT]: state => {
             state.status = '';
-            state.loggin = false;
+            state.loggin = undefined;
         }
     }
 }

@@ -48,6 +48,7 @@
 </template>
 <script>
 import auth from '@/api/auth';
+import { AUTH_REQUEST } from '@/common/action';
 export default {
   data() {
     return { password: "", account: "" };
@@ -60,6 +61,7 @@ export default {
         password: this.password
       }).then(({ data }) => {
         auth.setToken(data.token);
+        this.$store.dispatch(AUTH_REQUEST, this);
         this.$router.push({ name: 'Home' });
       });
     }

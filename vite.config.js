@@ -49,18 +49,20 @@ export default defineConfig(({ command }) => ({
 
     server: {
         // required to load scripts from custom host
-        cors: true,
-
         // we need a strict port to match on PHP side
         // change freely, but update on PHP to match the same port
         strictPort: true,
         port: 3000,
+        manifest: true,
+
+        // esbuild target
+        target: 'es2018',
         fs: {
             // Allow serving files from one level up to the project root
             allow: [path.resolve(__dirname, 'client')]
         },
         rollupOptions: {
-            input: '/main.js'
+            input: path.resolve(__dirname, 'client/main.js')
         }
     },
 

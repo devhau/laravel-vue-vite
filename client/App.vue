@@ -1,13 +1,13 @@
 <script>
 import { defineComponent, h, nextTick } from "vue";
 import { AUTH_REQUEST } from '@/common/action';
-import * as auth from '@/common/auth/index';
 import Profile from '@/components/profile/index.vue';
 export default defineComponent({
   name: "HomePage",
   data() {
     return {
       layout: 'Sidebar',
+      keyApp: '',
       menu: {
         app: {
           logo: {
@@ -147,34 +147,47 @@ export default defineComponent({
       },
       deep: true,
       immediate: true
+    },
+    '$route.meta.can': {
+      handler: function (_permisison) {
+        this.canPermission(_permisison);
+      },
+      deep: true,
+      immediate: true
     }
   },
-  created: () => {
+  methods: {
+    forceUpdate() {
+      this.keyApp = `app-${new Date().getTime()}`;
+    },
+    canPermission(_permisison) {
+      if (_permisison && !this.$can(_permisison)) {
+        this.$router.push({
+          name: 'Login'
+        });
+      }
+    },
+    checkPermission() {
+      this.$nextTick(() => {
+        this.canPermission(this.$route.meta.can);
+        this.forceUpdate();
+        this.$forceUpdate();
+      });
+    }
   },
   beforeMount() {
-    if (this.$store.getters.isAuthenticated) {
-      this.$store.dispatch(AUTH_REQUEST);
-    }
-    nextTick(() => {
-      if (!auth.checkRouterAuth(this.$route)) {
-        this.$router.push({ name: 'Login' });
-      }
-    });
-
-  },
-  mounted() {
-
+    this.$store.dispatch(AUTH_REQUEST, this);
   }
 });
 </script>
 
 <template>
   <vh-application
+    :key="keyApp"
     :menu="menu"
     :miniSidebar="false"
     :layout="layout"
   >
     <router-view></router-view>
-    {{this.$store.state.auth.loggin}}
   </vh-application>
 </template>
