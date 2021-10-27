@@ -1,10 +1,10 @@
 {
   "client/main.js": {
-    "file": "assets/main.4e0ba31f.js",
+    "file": "assets/main.09aa98f8.js",
     "src": "client/main.js",
     "isEntry": true,
     "imports": [
-      "_vendor.a9db33d4.js"
+      "_vendor.b9ae47ca.js"
     ],
     "dynamicImports": [
       "client/views/user/index.vue",
@@ -12,7 +12,7 @@
       "client/views/permission/index.vue"
     ],
     "css": [
-      "assets/main.40d8a779.css"
+      "assets/main.353d298f.css"
     ],
     "assets": [
       "assets/bootstrap-icons.64c00203.woff2",
@@ -23,13 +23,13 @@
     "file": "assets/vendor.e62ba47a.js"
   },
   "client/views/user/index.vue": {
-    "file": "assets/index.a0d62f27.js",
+    "file": "assets/index.601eb6de.js",
     "src": "client/views/user/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_index.1d074a31.js",
+      "_index.8f83d433.js",
       "client/main.js",
-      "_vendor.a9db33d4.js"
+      "_vendor.b9ae47ca.js"
     ]
   },
   "_index.4b65dadb.js": {
@@ -40,23 +40,23 @@
     ]
   },
   "client/views/role/index.vue": {
-    "file": "assets/index.d7875996.js",
+    "file": "assets/index.12471759.js",
     "src": "client/views/role/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_index.1d074a31.js",
+      "_index.8f83d433.js",
       "client/main.js",
-      "_vendor.a9db33d4.js"
+      "_vendor.b9ae47ca.js"
     ]
   },
   "client/views/permission/index.vue": {
-    "file": "assets/index.b9c8d2d4.js",
+    "file": "assets/index.3807d9cd.js",
     "src": "client/views/permission/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_index.1d074a31.js",
+      "_index.8f83d433.js",
       "client/main.js",
-      "_vendor.a9db33d4.js"
+      "_vendor.b9ae47ca.js"
     ]
   },
   "_vendor.c2a9ecf8.js": {
@@ -1112,6 +1112,16 @@
     "file": "assets/index.1d074a31.js",
     "imports": [
       "_vendor.a9db33d4.js",
+      "client/main.js"
+    ]
+  },
+  "_vendor.b9ae47ca.js": {
+    "file": "assets/vendor.b9ae47ca.js"
+  },
+  "_index.8f83d433.js": {
+    "file": "assets/index.8f83d433.js",
+    "imports": [
+      "_vendor.b9ae47ca.js",
       "client/main.js"
     ]
   }
