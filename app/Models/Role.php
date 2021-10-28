@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Spatie\Permission\Guard;
 use Spatie\Permission\Models\Role as RoleBase;
 
 class Role extends RoleBase

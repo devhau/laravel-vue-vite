@@ -85,12 +85,12 @@ export default {
             dataCell: (item, index, start) => index + start
           },
           {
-            title: 'title',
-            field: 'title'
+            title: 'Code',
+            field: 'name'
           },
           {
-            title: 'name',
-            field: 'name'
+            title: 'title',
+            field: 'title'
           },
           {
             title: 'module',

@@ -8,13 +8,24 @@ use App\Base\BaseRepository;
 
 class RoleRepository extends BaseRepository
 {
+    protected function rules($id)
+    {
+        return [
+            'name' => 'required|unique:roles,name' . ($id > 0 ? ',' . $id : ''),
+            'title' => 'required'
+        ];
+    }
+    protected function messages($id)
+    {
+        return [];
+    }
     public function getFieldsSearchable()
     {
         return [];
     }
     public function getFieldsSearchableByName()
     {
-        return ['name'];
+        return ['name', 'title'];
     }
     public function model()
     {
@@ -24,7 +35,7 @@ class RoleRepository extends BaseRepository
     {
         if ($id > 0) {
             $role = $this->model->newQuery()->find($id);
-            if ($role && $role->guard_name == $guard_name) {
+            if ($role && $role->guard_name == $guard_name && $role->permissions != null) {
                 return $role->permissions->map(function ($item) {
                     return $item->name;
                 }) ?? [];

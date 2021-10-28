@@ -1,0 +1,454 @@
+{
+  "client/main.js": {
+    "file": "assets/main.f9dab8c3.js",
+    "src": "client/main.js",
+    "isEntry": true,
+    "imports": [
+      "_vendor.160d8dae.js"
+    ],
+    "dynamicImports": [
+      "client/views/user/index.vue",
+      "client/views/role/index.vue",
+      "client/views/permission/index.vue"
+    ],
+    "css": [
+      "assets/main.fa204ffc.css"
+    ],
+    "assets": [
+      "assets/bootstrap-icons.64c00203.woff2",
+      "assets/bootstrap-icons.828fa79d.woff"
+    ]
+  },
+  "_vendor.98831373.js": {
+    "file": "assets/vendor.98831373.js"
+  },
+  "client/views/user/index.vue": {
+    "file": "assets/index.233b7468.js",
+    "src": "client/views/user/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index.916c2f62.js",
+      "client/main.js",
+      "_vendor.160d8dae.js"
+    ]
+  },
+  "_index.206de6f8.js": {
+    "file": "assets/index.206de6f8.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "client/views/role/index.vue": {
+    "file": "assets/index.ae2fb65f.js",
+    "src": "client/views/role/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index.916c2f62.js",
+      "client/main.js",
+      "_vendor.160d8dae.js"
+    ]
+  },
+  "client/views/permission/index.vue": {
+    "file": "assets/index.f90fe237.js",
+    "src": "client/views/permission/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index.916c2f62.js",
+      "client/main.js",
+      "_vendor.160d8dae.js"
+    ]
+  },
+  "_index.26491775.js": {
+    "file": "assets/index.26491775.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.61c272b3.js": {
+    "file": "assets/index.61c272b3.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.5ae07292.js": {
+    "file": "assets/index.5ae07292.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.1e294151.js": {
+    "file": "assets/index.1e294151.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.639c2161.js": {
+    "file": "assets/index.639c2161.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.5eb31285.js": {
+    "file": "assets/index.5eb31285.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.cce22654.js": {
+    "file": "assets/index.cce22654.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.f106b590.js": {
+    "file": "assets/index.f106b590.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.7c011049.js": {
+    "file": "assets/index.7c011049.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.930a2042.js": {
+    "file": "assets/index.930a2042.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.7e0009a0.js": {
+    "file": "assets/index.7e0009a0.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.0337bf2b.js": {
+    "file": "assets/index.0337bf2b.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.245a4c54.js": {
+    "file": "assets/index.245a4c54.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.92db4cd0.js": {
+    "file": "assets/index.92db4cd0.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.2f3e3810.js": {
+    "file": "assets/index.2f3e3810.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.fa6bb262.js": {
+    "file": "assets/index.fa6bb262.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.a77c66fa.js": {
+    "file": "assets/index.a77c66fa.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_index.bae6b84c.js": {
+    "file": "assets/index.bae6b84c.js",
+    "imports": [
+      "_vendor.98831373.js",
+      "client/main.js"
+    ]
+  },
+  "_vendor.160d8dae.js": {
+    "file": "assets/vendor.160d8dae.js"
+  },
+  "_index.fedc7538.js": {
+    "file": "assets/index.fedc7538.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.23a80bca.js": {
+    "file": "assets/index.23a80bca.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.10cfb5a0.js": {
+    "file": "assets/index.10cfb5a0.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.ac15c887.js": {
+    "file": "assets/index.ac15c887.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.8971570f.js": {
+    "file": "assets/index.8971570f.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.6e0415fa.js": {
+    "file": "assets/index.6e0415fa.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.f4161bd7.js": {
+    "file": "assets/index.f4161bd7.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.d66d154c.js": {
+    "file": "assets/index.d66d154c.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.ea486f93.js": {
+    "file": "assets/index.ea486f93.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.87fee46d.js": {
+    "file": "assets/index.87fee46d.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.3a21ec64.js": {
+    "file": "assets/index.3a21ec64.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.bac1a02d.js": {
+    "file": "assets/index.bac1a02d.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.458428c8.js": {
+    "file": "assets/index.458428c8.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.f8ea9b0f.js": {
+    "file": "assets/index.f8ea9b0f.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.84047da2.js": {
+    "file": "assets/index.84047da2.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.1ac58f93.js": {
+    "file": "assets/index.1ac58f93.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.99d99a72.js": {
+    "file": "assets/index.99d99a72.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.22d3e5ad.js": {
+    "file": "assets/index.22d3e5ad.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.76814a3e.js": {
+    "file": "assets/index.76814a3e.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.262685b0.js": {
+    "file": "assets/index.262685b0.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.4d78b632.js": {
+    "file": "assets/index.4d78b632.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.df615a8d.js": {
+    "file": "assets/index.df615a8d.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.7c0355bf.js": {
+    "file": "assets/index.7c0355bf.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.c9b06d47.js": {
+    "file": "assets/index.c9b06d47.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.a3a67f8e.js": {
+    "file": "assets/index.a3a67f8e.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.eec46663.js": {
+    "file": "assets/index.eec46663.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.ccb691c3.js": {
+    "file": "assets/index.ccb691c3.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.a77068fb.js": {
+    "file": "assets/index.a77068fb.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.6aa2f997.js": {
+    "file": "assets/index.6aa2f997.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ]
+  },
+  "_index.7c7fd613.js": {
+    "file": "assets/index.7c7fd613.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ],
+    "css": [
+      "assets/index.d3a0a61d.css"
+    ]
+  },
+  "_index.6d965ae0.js": {
+    "file": "assets/index.6d965ae0.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ],
+    "css": [
+      "assets/index.25391486.css"
+    ]
+  },
+  "_index.4c42b55e.js": {
+    "file": "assets/index.4c42b55e.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ],
+    "css": [
+      "assets/index.25391486.css"
+    ]
+  },
+  "_index.f0f1e8c4.js": {
+    "file": "assets/index.f0f1e8c4.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ],
+    "css": [
+      "assets/index.25391486.css"
+    ]
+  },
+  "_index.6fe79879.js": {
+    "file": "assets/index.6fe79879.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ],
+    "css": [
+      "assets/index.7a4aaeba.css"
+    ]
+  },
+  "_index.916c2f62.js": {
+    "file": "assets/index.916c2f62.js",
+    "imports": [
+      "_vendor.160d8dae.js",
+      "client/main.js"
+    ],
+    "css": [
+      "assets/index.7a4aaeba.css"
+    ]
+  }
+}

@@ -30,10 +30,14 @@ class RoleController extends ApiController
     }
     protected function storeAfter(Request $request, $input, $model)
     {
-        $model->syncPermissions($input['permissions']);
+        if (isset($input['permissions'])) {
+            $model->syncPermissions($input['permissions']);
+        }
     }
     protected function updateAfter(Request $request, $id, $input, $model)
     {
-        $model->syncPermissions($input['permissions']);
+        if (isset($input['permissions'])) {
+            $model->syncPermissions($input['permissions']);
+        }
     }
 }

@@ -11,11 +11,11 @@ use Illuminate\Support\Str;
 abstract class BaseRepository
 {
     public static $per_page = 15;
-    protected function rules()
+    protected function rules($id)
     {
         return [];
     }
-    protected function messages()
+    protected function messages($id)
     {
         return [];
     }
@@ -26,8 +26,8 @@ abstract class BaseRepository
      */
     public function validator($inputs, $id)
     {
-        $rules = $this->rules();
-        $messages = $this->messages();
+        $rules = $this->rules($id);
+        $messages = $this->messages($id);
         return Validator::make($inputs, $rules, $messages);
     }
     /**

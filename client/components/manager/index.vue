@@ -5,9 +5,14 @@
       :title="$t('common.manager.title.remove')"
       @hide="showFormConfirmRemove=false"
     >
+      <errors
+        v-if="showErrors"
+        :errors="errors"
+      />
       <slot
         name="content_confirmDelete"
         :data="dataUpdate"
+        :errors="errors"
         :app="this"
       ></slot>
       {{!$slots['content_confirmDelete']&&$t(optionConfig?.title?.confirmDelete)}}
@@ -32,10 +37,15 @@
       :show="showFormUpdate"
       @hide="showFormUpdate=false"
     >
+      <errors
+        v-if="showErrors"
+        :errors="errors"
+      />
       <slot
         name="form_update"
         :data="dataUpdate"
         :app="this"
+        :errors="errors"
         :isNew="isNew"
       ></slot>
       <template #footer="{}">
@@ -158,11 +168,16 @@
   </div>
 </template>
 <script>
+import errors from '@/components/error.vue';
 import { config as configDefault } from './config';
 export default {
+  components: { errors },
   props: {
     option: {},
     showAction: {
+      default: true
+    },
+    showErrors: {
       default: true
     },
     formsize: {
@@ -209,6 +224,7 @@ export default {
       showFormConfirmRemove: false,
       isNew: false,
       dataUpdate: {},
+      errors: undefined,
       pages: [10, 15, 25, 50, 100],
       source: [],
       search: "",
@@ -268,37 +284,55 @@ export default {
     },
     onRemoveData() {
       let { api, validate, itemKey } = this.optionConfig;
-      api.remove(this.dataUpdate[itemKey]).then(() => {
-        this.onSearch();
-        this.onHideForm();
+      this.errors = undefined;
+      api.remove(this.dataUpdate[itemKey]).then((rs) => {
+        if (rs.data.OK == true) {
+          this.onSearch();
+          this.onHideForm();
+        } else {
+          this.errors = rs.data.errors;
+        }
       });
     },
     onUpdateData() {
       let { api, validate, itemKey } = this.optionConfig;
+      this.errors = undefined;
       if (!validate || validate({ data: this.dataUpdate, isNew: this.isNew })) {
         if (this.isNew) {
           api.add(this.dataUpdate).then((rs) => {
-            this.onSearch();
-            this.onHideForm();
+            console.log(rs);
+            if (rs.data.OK == true) {
+              this.onSearch();
+              this.onHideForm();
+            } else {
+              this.errors = rs.data.errors;
+            }
           });
         } else {
           api.edit(this.dataUpdate[itemKey], this.dataUpdate).then((rs) => {
-            this.onSearch();
-            this.onHideForm();
+            if (rs.data.OK == true) {
+              this.onSearch();
+              this.onHideForm();
+            } else {
+              this.errors = rs.data.errors;
+            }
           });
         }
       }
     },
     onShowConfirmRemove(data) {
+      this.errors = undefined;
       this.dataUpdate = JSON.parse(JSON.stringify(data));
       this.showFormConfirmRemove = true;
     },
     onShowFormUpdate(data, isNew = false) {
+      this.errors = undefined;
       this.isNew = isNew;
       this.dataUpdate = JSON.parse(JSON.stringify(data));
       this.showFormUpdate = true;
     },
     onHideForm() {
+      this.errors = undefined;
       this.showFormUpdate = false;
       this.showFormConfirmRemove = false;
     }

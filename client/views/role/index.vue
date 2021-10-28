@@ -4,7 +4,7 @@
     <manager :option="option">
       <template #action_after="{row}">
         <vh-button
-          v-if=" row['name'] != 'supper-admin'"
+          v-if="$can(option.can.permission) && row['name'] != 'supper-admin'"
           beforeIcon="bi bi-shield"
           color="warning"
           size="sm"
@@ -82,7 +82,8 @@ export default {
         can: {
           new: per.ROLE.NEW,
           edit: per.ROLE.EDIT,
-          remove: per.ROLE.REMOVE
+          remove: per.ROLE.REMOVE,
+          permission: per.ROLE.PERMISSION
         },
         columns: [
           {

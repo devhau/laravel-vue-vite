@@ -1,6 +1,7 @@
 export default {
-   INDEX: 'role.index',
+    INDEX: 'role.index',
     NEW: 'role.store',
     EDIT: 'role.update',
-    REMOVE: 'role.destroy'
+    REMOVE: 'role.destroy',
+    PERMISSION: 'role.permission'
 }
