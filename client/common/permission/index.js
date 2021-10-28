@@ -1,11 +1,11 @@
 
-import home from './home';
-import permission from './permission';
-import user from './user';
-import role from './role';
+import HOME from './home';
+import PERMISSION from './permission';
+import USER from './user';
+import ROLE from './role';
 export default {
-    home,
-    role,
-    user,
-    permission
+    HOME,
+    PERMISSION,
+    USER,
+    ROLE
 }

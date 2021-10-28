@@ -1,3 +1,6 @@
 export default {
-    index: 'permission.index',
+    INDEX: 'permission.index',
+    NEW: 'permission.store',
+    EDIT: 'permission.update',
+    REMOVE: 'permission.destroy'
 }

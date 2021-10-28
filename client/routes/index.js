@@ -8,7 +8,7 @@ export default [
         path: '/',
         name: 'Home',
         meta: {
-            can: permission.home.index
+
         },
         component: HomePage,
     },

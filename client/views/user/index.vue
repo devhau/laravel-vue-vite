@@ -63,6 +63,7 @@
 import Manager from '@/components/manager/index.vue';
 import api from '@/api/user';
 import Permission from './permission.vue';
+import per from '@/common/permission';
 export default {
   components: { Manager, Permission },
   methods: {
@@ -78,6 +79,11 @@ export default {
       option: {
         api: {
           ...api
+        },
+        can: {
+          new: per.USER.NEW,
+          edit: per.USER.EDIT,
+          remove: per.USER.REMOVE
         },
         columns: [
           {

@@ -62,6 +62,7 @@
 <script>
 import Manager from '@/components/manager/index.vue';
 import api from '@/api/permission';
+import per from '@/common/permission';
 export default {
   components: { Manager },
 
@@ -70,6 +71,11 @@ export default {
       option: {
         api: {
           ...api
+        },
+        can: {
+          new: per.PERMISSION.NEW,
+          edit: per.PERMISSION.EDIT,
+          remove: per.PERMISSION.REMOVE
         },
         columns: [
           {

@@ -1,3 +1,3 @@
 export default {
-    index: 'home.index',
+    INDEX: 'home.index',
 }

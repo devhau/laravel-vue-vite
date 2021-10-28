@@ -27,7 +27,7 @@
       </template>
     </vh-modal>
     <vh-modal
-      :size="optionConfig.formsize(isNew,dataUpdate)"
+      :size="optionConfig.formsize({isNew,data:dataUpdate},this.formsize)"
       :title="isNew?$t('common.manager.title.new'):$t('common.manager.title.edit')"
       :show="showFormUpdate"
       @hide="showFormUpdate=false"
@@ -57,6 +57,7 @@
         <vh-button
           size="sm"
           :beforeIcon="optionConfig?.icon?.new??''"
+          v-can="optionConfig.can.new"
           @click="onShowFormUpdate({},true)"
         >{{$t(optionConfig?.button?.new)}}</vh-button>
         <slot
@@ -102,6 +103,7 @@
             </slot>
             <vh-button
               v-if="optionConfig.checkButtonDelete({row,index,start})"
+              v-can="optionConfig.can.remove"
               size="sm"
               color="danger"
               @click="onShowConfirmRemove(row)"
@@ -109,6 +111,7 @@
             >{{$t(optionConfig?.button?.remove)}}</vh-button>
             <vh-button
               v-if="optionConfig.checkButtonUpdate({row,index,start})"
+              v-can="optionConfig.can.edit"
               size="sm"
               :beforeIcon="optionConfig?.icon?.edit??''"
               @click="onShowFormUpdate(row)"

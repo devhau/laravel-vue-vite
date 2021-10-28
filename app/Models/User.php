@@ -49,6 +49,6 @@ class User extends Authenticatable
     }
     public function isSuperAdmin(): bool
     {
-        return $this->hasRole(ROLE::SUPPER_ADMIN) || $this->id < 5;
+        return $this->hasRole(ROLE::SUPPER_ADMIN);
     }
 }

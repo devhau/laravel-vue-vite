@@ -45,3 +45,10 @@ export const APPLICATION_LAYOUT = {
     NoSidebar: 'NoSidebar',
     Sidebar: 'Sidebar'
 };
+
+export const HTTP_STATUS = {
+    LOADING: 'LOADING',
+    DONE: 'DONE',
+    ERORR: 'ERORR',
+    NONE: ''
+}

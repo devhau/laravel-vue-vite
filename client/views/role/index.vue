@@ -60,6 +60,7 @@
 import Manager from '@/components/manager/index.vue';
 import api from '@/api/role';
 import Permission from './permission.vue';
+import per from '@/common/permission';
 export default {
   components: { Manager, Permission },
   methods: {
@@ -77,6 +78,11 @@ export default {
         checkButtonUpdate: ({ row, index, start }) => row['name'] != 'supper-admin',
         api: {
           ...api
+        },
+        can: {
+          new: per.ROLE.NEW,
+          edit: per.ROLE.EDIT,
+          remove: per.ROLE.REMOVE
         },
         columns: [
           {

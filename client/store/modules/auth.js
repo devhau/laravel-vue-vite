@@ -1,5 +1,6 @@
 import auth from '@/api/auth';
 import { AUTH_CHECK, AUTH_REQUEST, AUTH_SUCCESS, AUTH_ERROR, AUTH_LOGOUT } from '@/common/action';
+import { HTTP_STATUS } from '@/common/constant';
 const initState = async () => {
     const empty = {
         loggin: undefined,
@@ -32,9 +33,9 @@ export default {
         }
     },
     getters: {
-        isAuthenticated: (state) => (flgLoading = true) => (flgLoading && state.status == 'loading') || state.loggin,
+        isAuthenticated: (state) => (flgLoading = true) => (flgLoading && state.status == HTTP_STATUS.LOADING) || state.loggin,
         canPermission: (state) => (permisison, flgLoading = true) => {
-            if (state.status == 'loading' && flgLoading) return true;
+            if (state.status == HTTP_STATUS.LOADING && flgLoading) return true;
             if (!state.loggin) return false;
             if (!state.isAdmin && !state.permissions.includes(permisison)) return false;
             return true;
@@ -42,21 +43,21 @@ export default {
     },
     mutations: {
         [AUTH_REQUEST]: state => {
-            state.status = 'loading';
+            state.status = HTTP_STATUS.LOADING;
         },
         [AUTH_SUCCESS]: (state, data) => {
-            state.status = "done";
+            state.status = HTTP_STATUS.DONE;
             state.loggin = true;
             state.user = data.user;
             state.isAdmin = data.isAdmin;
             state.permissions = data.permissions;
         },
         [AUTH_ERROR]: state => {
-            state.status = 'error';
+            state.status = HTTP_STATUS.ERORR;
             state.loggin = false;
         },
         [AUTH_LOGOUT]: state => {
-            state.status = '';
+            state.status = HTTP_STATUS.NONE;
             state.loggin = undefined;
         }
     }
