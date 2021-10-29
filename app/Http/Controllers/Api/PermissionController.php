@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Repositories\PermissionRepository;
 use App\Base\RestApi;
+use App\Common\Permission;
 
 class PermissionController  extends  ApiController
 {

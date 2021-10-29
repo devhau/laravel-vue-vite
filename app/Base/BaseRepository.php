@@ -270,9 +270,9 @@ abstract class BaseRepository
         if (is_array($sort) && count($sort)) {
             foreach ($sort as $key => $val) {
                 if ($val == true) {
-                    $query = $query->orderByDesc($key);
-                } else {
                     $query =  $query->orderBy($key);
+                } else {
+                    $query = $query->orderByDesc($key);
                 }
             }
         }

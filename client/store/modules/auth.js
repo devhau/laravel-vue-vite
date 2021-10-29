@@ -30,6 +30,10 @@ export default {
             if (app && app.checkPermission) {
                 app.checkPermission();
             }
+        },
+        [AUTH_LOGOUT]: ({ commit, dispatch }, app) => {
+            commit(AUTH_LOGOUT);
+            auth.clearToken(true);
         }
     },
     getters: {
@@ -58,7 +62,10 @@ export default {
         },
         [AUTH_LOGOUT]: state => {
             state.status = HTTP_STATUS.NONE;
-            state.loggin = undefined;
+            state.loggin = false;
+            state.user = undefined;
+            state.isAdmin = undefined;
+            state.permissions = undefined;
         }
     }
 }

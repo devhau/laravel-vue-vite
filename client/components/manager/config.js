@@ -3,6 +3,11 @@ export const config = {
     formsize: ({ isNew, data }, _formsize) => _formsize,
     checkButtonDelete: ({ row, index, start }) => true,
     checkButtonUpdate: ({ row, index, start }) => true,
+    query: {
+        new: ({ option, app }) => ({}),
+        sort: ({ option, app }) => ({}),
+        filter: ({ option, app }) => ({}),
+    },
     can: {
         index: '',
         new: '',

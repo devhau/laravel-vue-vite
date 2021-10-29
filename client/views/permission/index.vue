@@ -72,6 +72,9 @@ export default {
         api: {
           ...api
         },
+        query: {
+          sort: ({ option, app }) => ({ name: true }),
+        },
         can: {
           new: per.PERMISSION.NEW,
           edit: per.PERMISSION.EDIT,

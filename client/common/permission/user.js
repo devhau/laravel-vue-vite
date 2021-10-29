@@ -3,5 +3,5 @@ export default {
     NEW: 'user.store',
     EDIT: 'user.update',
     REMOVE: 'user.destroy',
-    PERMISSION: 'user.view-permission'
+    PERMISSION: 'user.permission'
 }

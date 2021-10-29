@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Route;
 use App\Repositories\PermissionRepository;
+use App\Common\Permission;
 
 class LoadPermissionFromRouter extends Command
 {
@@ -46,7 +47,7 @@ class LoadPermissionFromRouter extends Command
 
         $routeCollection = Route::getRoutes();
 
-        $guest_perrmissons = config('permission.guest_perrmission');
+        $guest_perrmissons = config('permission.guest_permission');
         foreach ($routeCollection as $value) {
             $name = $value->getName();
             $guard_name = '';
@@ -65,7 +66,7 @@ class LoadPermissionFromRouter extends Command
             if ($name == "" || !$checkAuth) continue;
             $this->savePermissoion($name, $guard_name);
         }
-        $extend_perrmission = config('permission.extend_perrmission');
+        $extend_perrmission = config('permission.extend_permission');
         if (is_array($extend_perrmission) && count($extend_perrmission) > 0) {
             foreach ($extend_perrmission as $key => $items) {
                 foreach ($items as $name) {
@@ -73,7 +74,9 @@ class LoadPermissionFromRouter extends Command
                 }
             }
         }
-
+        foreach (Permission::getPermissions() as $key => $value) {
+            $this->savePermissoion($value);
+        }
         $this->info('The command router:permission was successful!');
         return 0;
     }

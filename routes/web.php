@@ -20,3 +20,8 @@ Route::get('admin', function () {
     return view('admin');
 });
 
+Route::get('test', function () {
+    foreach (App\Common\Permission::getPermissions() as $key => $value) {
+        echo $value;
+    }
+});

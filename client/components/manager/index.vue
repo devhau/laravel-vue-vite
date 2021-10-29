@@ -3,7 +3,7 @@
     <vh-modal
       :show="showFormConfirmRemove"
       :title="$t('common.manager.title.remove')"
-      @hide="showFormConfirmRemove=false"
+      @hide="onHideForm()"
     >
       <errors
         v-if="showErrors"
@@ -35,7 +35,7 @@
       :size="optionConfig.formsize({isNew,data:dataUpdate},this.formsize)"
       :title="isNew?$t('common.manager.title.new'):$t('common.manager.title.edit')"
       :show="showFormUpdate"
-      @hide="showFormUpdate=false"
+      @hide="onHideForm()"
     >
       <errors
         v-if="showErrors"
@@ -249,6 +249,7 @@ export default {
       }
     },
     onSort(column, val) {
+      this.sort = {};
       this.sort[column.field] = val;
       this.$emit('sort', column, val);
       this.onSearch();
@@ -300,7 +301,6 @@ export default {
       if (!validate || validate({ data: this.dataUpdate, isNew: this.isNew })) {
         if (this.isNew) {
           api.add(this.dataUpdate).then((rs) => {
-            console.log(rs);
             if (rs.data.OK == true) {
               this.onSearch();
               this.onHideForm();
@@ -328,26 +328,36 @@ export default {
     onShowFormUpdate(data, isNew = false) {
       this.errors = undefined;
       this.isNew = isNew;
-      this.dataUpdate = JSON.parse(JSON.stringify(data));
+      this.dataUpdate = JSON.parse(JSON.stringify(data ?? {}));
       this.showFormUpdate = true;
     },
     onHideForm() {
       this.errors = undefined;
       this.showFormUpdate = false;
       this.showFormConfirmRemove = false;
+    },
+    setOptionConfig(option) {
+      this.optionConfig = Object.assign(configDefault, option);
+    },
+    clearFilter() {
+      if (this.optionConfig.query.sort)
+        this.sort = this.optionConfig.query.sort({ option: this.optionConfig, app: this }) ?? {};
+      if (this.optionConfig.query.filter)
+        this.filter = this.optionConfig.query.filter({ option: this.optionConfig, app: this }) ?? {};
+      this.onSearch();
     }
   },
   created() {
-    this.optionConfig = Object.assign(configDefault, this.option);
+    this.setOptionConfig(this.option);
   },
   mounted() {
-    this.optionConfig = Object.assign(configDefault, this.option);
-    this.onSearch();
+    this.setOptionConfig(this.option);
+    this.clearFilter();
   },
   watch: {
     option: {
       handler: function (_optionConfig) {
-        this.optionConfig = Object.assign(configDefault, _optionConfig);
+        this.setOptionConfig(_optionConfig);
       },
       deep: true,
       immediate: true
