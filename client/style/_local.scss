@@ -1,0 +1,15 @@
+.vh-switch-local {
+    .vh-local-item {
+        background: #ccc;
+        padding: 5px;
+        &:hover,
+        &.active {
+            cursor: pointer;
+            background: rgb(77, 76, 76);
+            color: #fff;
+        }
+        &:hover {
+            background: rgb(107, 107, 107);
+        }
+    }
+}

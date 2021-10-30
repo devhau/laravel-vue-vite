@@ -11,5 +11,6 @@ class Permission
     {
         return (new \ReflectionClass(__CLASS__))->getConstants();
     }
+    // Custom
     public const showHello = "custom.showHello";
 }

@@ -1,6 +1,10 @@
 <template>
-  <div>
-    {{$can('home.indexfff')}}
-    <vh-button v-can="'home.index'">Chào mọi người</vh-button>
-  </div>
+    <Dashboard />
 </template>
+<script>
+import Dashboard from "@/components/dashboard/index.vue";
+export default {
+    components: { Dashboard },
+    setup() {},
+};
+</script>

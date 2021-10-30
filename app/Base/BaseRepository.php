@@ -276,6 +276,9 @@ abstract class BaseRepository
                 }
             }
         }
+        if ($request->get('is_all')) {
+            return $query->get();
+        }
         return $query->paginate($per_page);
     }
 }

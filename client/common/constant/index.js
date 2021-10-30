@@ -52,3 +52,4 @@ export const HTTP_STATUS = {
     ERORR: 'ERORR',
     NONE: ''
 }
+export const KEY_LOLCAL_LANG = 'KEY_LOLCAL_LANG';

@@ -5,7 +5,7 @@ export default {
             new: 'Thêm mới',
             edit: 'Chỉnh sửa',
             action: 'Hành động',
-            confirmDelete: 'Bạn có muốn xóa bảng ghi này không?',
+            confirmDelete: 'Bạn có muốn xóa bản ghi này không?',
             remove: 'Xóa dữ liệu'
         },
         button: {

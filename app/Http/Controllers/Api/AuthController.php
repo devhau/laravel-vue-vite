@@ -47,9 +47,9 @@ class AuthController extends ApiController
             ]);
         }
         if ($token = $user->createToken($request->device_name)->plainTextToken) {
-            return response()->json(['status' => 'success', 'token' => $token], 200)->header('Authorization', $token);
+            return $this->JsonOK(['token' => $token]);
         }
-        return response()->json(['error' => 'login_error'], 401);
+        return $this->JsonErrors('login_error', null, 401);
     }
     public function user(Request $request)
     {
@@ -76,6 +76,10 @@ class AuthController extends ApiController
     }
     public function logout(Request $request)
     {
-        return $request->user()->currentAccessToken()->delete();
+        if ($user = $request->user()) {
+            $user->currentAccessToken()->delete();
+            return $this->JsonOK('done');
+        }
+        return $this->JsonErrors('done');
     }
 }

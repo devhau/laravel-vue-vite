@@ -2,6 +2,11 @@
     background: #026aa7;
     height: 100vh;
     overflow: auto;
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    border: none;
+    border-radius: 0;
     .vh-auth-box {
         box-shadow: chocolate;
         transform: scale(1);

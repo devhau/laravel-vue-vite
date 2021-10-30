@@ -1,5 +1,6 @@
 export default {
     button: {
-        logout: 'Logout'
+        logout: 'Logout',
+        profile:'Profile'
     }
 }

@@ -1,3 +1,9 @@
 export default {
-    dashboard: 'Bảng điều khiển'
-}
+    dashboard: 'Dashboard',
+    system: {
+        title: 'System',
+        user: 'User',
+        role: 'Role',
+        permission: 'Permission'
+    }
+};

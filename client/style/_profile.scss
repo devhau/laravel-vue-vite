@@ -5,9 +5,22 @@
         .vh-profile-box {
             border-bottom-left-radius: 1px;
             border-bottom-right-radius: 1px;
-            background: #ccc;
+            background: #fff;
             border: 1px solid #ccc;
             margin-right: 2px;
+            .vh-profile-box__avatar {
+                padding: 20px;
+                min-height: 100px;
+                background: rgb(73, 80, 94);
+                text-align: center;
+                .vh-profile-box__avatar--image {
+                    margin: 5px auto;
+                    height: 100px;
+                    width: 100px;
+                    border-radius: 100px;
+                    background: #fff;
+                }
+            }
             .vh-profile-box__item {
                 padding: 2px;
                 min-height: 20px;

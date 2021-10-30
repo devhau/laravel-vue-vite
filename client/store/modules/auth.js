@@ -3,7 +3,7 @@ import { AUTH_CHECK, AUTH_REQUEST, AUTH_SUCCESS, AUTH_ERROR, AUTH_LOGOUT } from 
 import { HTTP_STATUS } from '@/common/constant';
 const initState = async () => {
     const empty = {
-        loggin: undefined,
+        loggin: true,
         user: {},
         permissions: [],
         status: '',
@@ -24,6 +24,8 @@ export default {
                     commit(AUTH_LOGOUT);
                 }
                 dispatch(AUTH_CHECK, app);
+            }).catch(() => {
+
             });
         },
         [AUTH_CHECK]: ({ commit, dispatch }, app) => {

@@ -5,10 +5,11 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'flag-icon-css/css/flag-icons.css';
 import '@devhau/vue-ui/dist/vue-ui.esm.css';
 import '@/style/_index.scss';
-
 import VueUi from '@devhau/vue-ui';
+import { KEY_LOLCAL_LANG } from "@/common/constant";
 
 import { LANGUAGE_DEFAULT } from '@/common/constant';
 
@@ -17,8 +18,17 @@ import routes from '@/routes';
 import messages from '@/locale';
 import stores from '@/store';
 import directives from '@/directives';
+let locale = 'vi';
+if (localStorage.getItem(KEY_LOLCAL_LANG)) {
+    locale = localStorage.getItem(KEY_LOLCAL_LANG);
+} else if (document && document.querySelector) {
+    let el = document.querySelector('meta[name=lang]');
+    if (el && el.getAttribute('content')) {
+        locale = el.getAttribute('content');
+    }
+}
 const i18n = createI18n({
-    locale: 'vi', // set locale
+    locale: locale, // set locale
     fallbackLocale: LANGUAGE_DEFAULT, // set fallback locale
     messages
 });

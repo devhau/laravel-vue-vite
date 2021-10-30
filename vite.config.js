@@ -20,7 +20,7 @@ Dotenv.config();
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
     // config
-    // root: path.resolve(__dirname, 'client'),
+    // root:  path.resolve(__dirname, 'client'),
     publicDir: path.resolve(__dirname, 'client', 'static'),
     base: command === "build" ? "/dist/" : "",
     plugins: [

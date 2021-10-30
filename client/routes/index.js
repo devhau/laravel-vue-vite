@@ -8,7 +8,7 @@ export default [
         path: '/',
         name: 'Home',
         meta: {
-
+            auth: true
         },
         component: HomePage,
     },

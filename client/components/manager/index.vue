@@ -168,7 +168,7 @@
   </div>
 </template>
 <script>
-import errors from '@/components/error.vue';
+import errors from '@/components/common/error.vue';
 import { config as configDefault } from './config';
 export default {
   components: { errors },
