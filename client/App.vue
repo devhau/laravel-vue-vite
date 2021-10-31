@@ -19,16 +19,9 @@ export default defineComponent({
             deep: true,
             immediate: true,
         },
-        "$route.meta.can": {
-            handler: function (_permisison) {
-                this.canPermission(_permisison);
-            },
-            deep: true,
-            immediate: true,
-        },
         "$store.state.loggin": {
             handler: function (_loggin, _logginOld) {
-                this.checkPermission();
+                this.$store.dispatch(AUTH_REQUEST, this);
             },
             deep: true,
             immediate: true,
@@ -39,25 +32,22 @@ export default defineComponent({
             this.keyApp = `app-${new Date().getTime()}`;
         },
         canPermission(_permisison) {
-            if (_permisison && !this.$can(_permisison)) {
+            if (_permisison && !this.$can(_permisison) && !this.$isAuth()) {
+                return false;
+            }
+            return true;
+        },
+        checkPermission() {
+            if (
+                (this.$route?.meta?.can &&
+                    !this.canPermission(this.$route.meta.can)) ||
+                (this.$route?.meta?.auth && !this.$isAuth())
+            ) {
                 this.$router.push({
                     name: "Login",
                 });
             }
-        },
-        checkPermission() {
             this.$nextTick(() => {
-                if (!this.canPermission(this.$route.meta.can)) {
-                    if (
-                        !this.$route.meta.can &&
-                        this.$route.meta.auth === true &&
-                        !this.$isAuth()
-                    ) {
-                        this.$router.push({
-                            name: "Login",
-                        });
-                    }
-                }
                 this.forceUpdate();
                 this.$forceUpdate();
             });

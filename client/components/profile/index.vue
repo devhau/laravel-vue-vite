@@ -2,7 +2,7 @@
     <div class="vh-profile-box">
         <div class="vh-profile-box__avatar">
             <img class="vh-profile-box__avatar--image" />
-            <h4 style="color: #fff">{{ $store.state.auth.user.name }}</h4>
+            <h4 style="color: #fff">{{ user.name }}</h4>
         </div>
         <div class="vh-profile-box__item">
             <vh-row>
@@ -29,6 +29,20 @@
 import { AUTH_LOGOUT } from "@/common/action";
 export default {
     setup() {},
+    data() {
+        return {
+            user: "",
+        };
+    },
+    watch: {
+        "$store.state.auth.user": {
+            handler: function (_user) {
+                this.user = _user;
+            },
+            deep: true,
+            immediate: true,
+        },
+    },
     methods: {
         logout() {
             this.$store.dispatch(AUTH_LOGOUT);

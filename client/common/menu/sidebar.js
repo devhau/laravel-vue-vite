@@ -17,6 +17,7 @@ export default [
                 className: "",
                 icon: "bi bi-box",
                 title: () => h(textLocal, { text: "menu.system.user" }),
+                can: 'user.index',
                 router: {
                     name: "User",
                 },
@@ -25,6 +26,7 @@ export default [
                 className: "",
                 icon: "bi bi-box",
                 title: () => h(textLocal, { text: "menu.system.role" }),
+                can: 'role.index',
                 router: {
                     name: "Role",
                 },
@@ -33,6 +35,7 @@ export default [
                 className: "",
                 icon: "bi bi-box",
                 title: () => h(textLocal, { text: "menu.system.permission" }),
+                can: 'permission.index',
                 router: {
                     name: "Permission",
                 },

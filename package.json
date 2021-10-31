@@ -17,7 +17,7 @@
     },
     "dependencies": {
         "@devhau/utils": "^0.0.7",
-        "@devhau/vue-ui": "^1.0.12",
+        "@devhau/vue-ui": "^1.0.15",
         "@popperjs/core": "^2.10.2",
         "boostrap": "^2.0.0",
         "bootstrap": "^5.1.3",

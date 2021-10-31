@@ -6,7 +6,6 @@ export default [
         icon: "bi bi-box",
         title: "Home",
         link: "https://www.hau.xyz",
-        sub: [],
     },
     {
         className: "",
@@ -33,13 +32,11 @@ export default [
         icon: "bi bi-box",
         title: "Order",
         link: "",
-        sub: [],
     },
     {
         className: "",
         icon: "bi bi-box",
         title: "Github",
         link: "https://github.com/devhau/vue-ui-demo",
-        sub: [],
     },
 ]
