@@ -53,9 +53,6 @@ export default defineComponent({
             });
         },
     },
-    beforeMount() {
-        this.$store.dispatch(AUTH_REQUEST, this);
-    },
 });
 </script>
 

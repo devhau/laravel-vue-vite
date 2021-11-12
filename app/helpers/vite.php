@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\HtmlString;
 
 if (!function_exists('vite_assets')) {
-    function vite_assets($path = 'client/main.js', $dir = 'dist'): HtmlString
+    function vite_assets($path = 'main.js', $dir = 'dist'): HtmlString
     {
         $manifest = json_decode(file_get_contents(
             public_path($dir . '/manifest.json')

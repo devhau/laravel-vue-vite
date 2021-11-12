@@ -75,11 +75,13 @@ const api = {
 };
 
 export const baseApi = (model) => {
+    const get = (id, query) => api.get(`${model}/${id},`, query);
     const getAll = (query) => api.get(`${model}`, query);
     const add = (data) => api.post(`${model}`, data);
     const edit = (id, data) => api.put(`${model}/${id}`, data);
     const remove = (id) => api.delete(`${model}/${id}`);
     return {
+        get,
         getAll,
         add,
         edit,

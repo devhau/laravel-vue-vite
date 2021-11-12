@@ -20,7 +20,7 @@ Dotenv.config();
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
     // config
-    // root:  path.resolve(__dirname, 'client'),
+    root: path.resolve(__dirname, 'client'),
     publicDir: path.resolve(__dirname, 'client', 'static'),
     base: command === "build" ? "/dist/" : "",
     plugins: [
@@ -44,7 +44,6 @@ export default defineConfig(({ command }) => ({
         rollupOptions: {
             input: path.resolve(__dirname, 'client/main.js')
         },
-        watch: {}
     },
 
     server: {
@@ -59,13 +58,9 @@ export default defineConfig(({ command }) => ({
         target: 'es2018',
         fs: {
             // Allow serving files from one level up to the project root
-            allow: [path.resolve(__dirname, 'client')]
+            allow: [path.resolve(__dirname), path.resolve(__dirname, 'client')]
         },
-        rollupOptions: {
-            input: path.resolve(__dirname, 'client/main.js')
-        }
     },
-
     // required for in-browser template compilation
     // https://v3.vuejs.org/guide/installation.html#with-a-bundler
     resolve: {
@@ -77,7 +72,8 @@ export default defineConfig(({ command }) => ({
     optimizeDeps: {
         include: [
             'vue',
-            'axios'
+            'axios',
+            '@devhau/vue-ui'
         ]
     },
 }));

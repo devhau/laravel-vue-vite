@@ -1,5 +1,6 @@
 import { h } from 'vue';
 import textLocal from '@/components/common/textLocal.vue';
+
 export default [
     {
         className: "",
