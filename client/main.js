@@ -6,12 +6,10 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'flag-icon-css/css/flag-icons.css';
-import '@devhau/vue-ui/dist/vue-ui.esm.css';
+import 'hoya/dist/hoya.esm.css';
 import '@/style/_index.scss';
-import VueUi from '@devhau/vue-ui';
-import { KEY_LOLCAL_LANG } from "@/common/constant";
-
-import { LANGUAGE_DEFAULT } from '@/common/constant';
+import hoya from 'hoya';
+import { KEY_LOLCAL_LANG, LANGUAGE_DEFAULT } from "@/common/constant";
 
 import App from '@/App.vue'
 import routes from '@/routes';
@@ -56,7 +54,7 @@ router.beforeEach((to, from, next) => {
 
 app.config.globalProperties.$can = (canPermission, flgLoading = true) => store.getters['canPermission'](canPermission, flgLoading);
 app.config.globalProperties.$isAuth = (flgLoading = true) => store.getters['isAuthenticated'](flgLoading);
-app.use(VueUi);
+app.use(hoya);
 app.use(router);
 app.use(store);
 app.use(i18n);

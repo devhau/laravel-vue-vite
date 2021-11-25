@@ -276,9 +276,23 @@ abstract class BaseRepository
                 }
             }
         }
+
+        $this->searchBefore($request,$query);
+
         if ($request->get('is_all')) {
             return $query->get();
         }
         return $query->paginate($per_page);
+    }
+    
+    /**
+     * Search before a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  array  $input
+     * @return void
+     */
+    protected function searchBefore(Request $request, $query)
+    {
     }
 }

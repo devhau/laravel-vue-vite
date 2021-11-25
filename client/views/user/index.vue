@@ -12,8 +12,7 @@
                     color="warning"
                     size="sm"
                     @click="SetPermission(row)"
-                    >{{ $t("module.user.button.permission") }}</vh-button
-                >
+                    >{{ $t("module.user.button.permission") }}</vh-button>
             </template>
             <template #form_update="{ data, isNew }">
                 <div class="mb-3">

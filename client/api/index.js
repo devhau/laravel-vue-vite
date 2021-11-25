@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { HttpValidateStatus } from '@devhau/utils';
+import { HttpValidateStatus } from '@/utils/http';
 
 const baseURL = import.meta.env.VITE_APP_API_URL;
 export const getUrl = (url) => {
