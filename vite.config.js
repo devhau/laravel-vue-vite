@@ -73,7 +73,7 @@ export default defineConfig(({ command }) => ({
         include: [
             'vue',
             'axios',
-            '@devhau/vue-ui'
+            'hoya'
         ]
     },
 }));
