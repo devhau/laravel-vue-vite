@@ -65,18 +65,21 @@ export default {
                 email: this.account,
                 device_name: "web",
                 password: this.password,
-            }).then((rs) => {
-                if (rs.data.OK == true) {
-                    auth.setToken(rs.data.data.token);
-                    this.$nextTick(() => {
-                        if (location && location.reload) location.reload();
-                        this.$store.dispatch(AUTH_REQUEST, this);
-                        this.$router.push({ name: "Home" });
-                    });
-                } else {
-                    this.errors = rs.data.errors;
-                }
-            });
+            })
+                .then(({ data }) => {
+                    if (data.OK == true) {
+                        auth.setToken(data.token);
+                        this.$nextTick(() => {
+                            this.$store.dispatch(AUTH_REQUEST, this);
+                            this.$router.push({ name: "Home" });
+                        });
+                    } else {
+                        this.errors = data.errors;
+                    }
+                })
+                .catch(({ request }) => {
+                    this.errors = JSON.parse(request.responseText).errors;
+                });
         },
     },
     setup() {},

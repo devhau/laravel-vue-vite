@@ -42,11 +42,11 @@ const app = createApp(App);
 
 router.beforeEach((to, from, next) => {
     //check permisison for router
-    if (to?.meta?.can && !app.config.globalProperties.$can(to.meta.can)) {
+    if (to?.meta?.can && !app.config.globalProperties.$can(to.meta.can, false)) {
         return next({ name: 'Login' });
     }
     //check page is login and go to home
-    if (app.config.globalProperties.$isAuth() && (to.path === '/login')) {
+    if (app.config.globalProperties.$isAuth(false) && (to.path === '/login')) {
         return next('/');
     }
     return next();

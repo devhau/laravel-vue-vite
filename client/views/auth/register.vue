@@ -64,13 +64,17 @@ export default {
                 email: this.email,
                 name: this.name,
                 password: this.pass,
-            }).then((rs) => {
-                if (rs.data.OK == true) {
-                    this.$router.push({ name: "Login" });
-                } else {
-                    this.errors = rs.data.errors;
-                }
-            });
+            })
+                .then((rs) => {
+                    if (rs.data.OK == true) {
+                        this.$router.push({ name: "Login" });
+                    } else {
+                        this.errors = rs.data.errors;
+                    }
+                })
+                .catch(({ request }) => {
+                    this.errors = JSON.parse(request.responseText).errors;
+                });
         },
     },
     setup() {},

@@ -12,9 +12,10 @@ export default defineComponent({
         };
     },
     watch: {
-        "$route.meta.layout": {
-            handler: function (_layout) {
-                this.layout = _layout;
+        $route: {
+            handler: function (_route) {
+                this.layout = _route.meta.layout;
+                this.checkPermission();
             },
             deep: true,
             immediate: true,
@@ -31,8 +32,8 @@ export default defineComponent({
         forceUpdate() {
             this.keyApp = `app-${new Date().getTime()}`;
         },
-        canPermission(_permisison) {
-            if (_permisison && !this.$can(_permisison) && !this.$isAuth()) {
+        canPermission(_permission) {
+            if (_permission && !this.$can(_permission) && !this.$isAuth()) {
                 return false;
             }
             return true;

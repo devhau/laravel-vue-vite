@@ -25,7 +25,9 @@ export default {
                 }
                 dispatch(AUTH_CHECK, app);
             }).catch(() => {
-
+                commit(AUTH_ERROR);
+                commit(AUTH_LOGOUT);
+                dispatch(AUTH_CHECK, app);
             });
         },
         [AUTH_CHECK]: ({ commit, dispatch }, app) => {
@@ -40,10 +42,10 @@ export default {
     },
     getters: {
         isAuthenticated: (state) => (flgLoading = true) => (flgLoading && state.status == HTTP_STATUS.LOADING) || state.loggin,
-        canPermission: (state) => (permisison, flgLoading = true) => {
+        canPermission: (state) => (permission, flgLoading = true) => {
             if (state.status == HTTP_STATUS.LOADING && flgLoading) return true;
             if (!state.loggin) return false;
-            if (!state.isAdmin && !state.permissions.includes(permisison)) return false;
+            if (!state.isAdmin && !state.permissions.includes(permission)) return false;
             return true;
         }
     },

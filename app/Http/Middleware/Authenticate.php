@@ -20,7 +20,7 @@ class Authenticate extends Middleware
             return route('login');
         }
     }
-    public function handle($request, Closure $next, $guards)
+    public function handle($request, Closure $next, ...$guards)
     {
         /** @var \App\User $user */
         $user = $request->user();
@@ -32,6 +32,6 @@ class Authenticate extends Middleware
         if ((count($guest_permission) === 0 || !in_array($route, $guest_permission)) && !empty($user) && !$user->isSuperAdmin() && !empty($route) && !$user->hasPermissionTo($route)) {
             return abort(403);
         }
-        return parent::handle($request, $next, $guards);
+        return parent::handle($request, $next, ...$guards);
     }
 }
